@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: '御心狐',
-  url: 'https://wuzhouwei.github.io/', //主站域名
+  url: 'https://wuzhouwei.github.io', //主站域名
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
