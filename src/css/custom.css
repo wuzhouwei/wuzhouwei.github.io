@@ -1,0 +1,95 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+    --ifm-color-primary: #2e8555;
+    --ifm-color-primary-dark: #29784c;
+    --ifm-color-primary-darker: #277148;
+    --ifm-color-primary-darkest: #205d3b;
+    --ifm-color-primary-light: #33925d;
+    --ifm-color-primary-lighter: #359962;
+    --ifm-color-primary-lightest: #3cad6e;
+    --ifm-code-font-size: 95%;
+    --ifm-color-logo-svg: #a9a9a9;
+    --ifm-color-bg-adorn: #faebd7;
+    --ifm-color-bg-home: #fefefe;
+    --ifm-color-first-shadow: #B2B2B2;
+    --ifm-color-first-font: #363636;
+    --ifm-color-common-border: #eee;
+
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+    --ifm-color-primary: #25c2a0;
+    --ifm-color-primary-dark: #21af90;
+    --ifm-color-primary-darker: #1fa588;
+    --ifm-color-primary-darkest: #1a8870;
+    --ifm-color-primary-light: #29d5b0;
+    --ifm-color-primary-lighter: #32d8b4;
+    --ifm-color-primary-lightest: #4fddbf;
+    --ifm-color-logo-svg: #F3F7F6;
+    --ifm-color-bg-adorn: rgba(0, 0, 0, .3);
+    --ifm-color-bg-home: #18191a;
+    --ifm-color-first-shadow: #F3F7F6;
+    --ifm-color-first-font: #F3F7F6;
+    --ifm-color-common-border: #F3F7F6;
+}
+
+.docusaurus-highlight-code-line {
+    background-color: rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 calc(-1 * var(--ifm-pre-padding));
+    padding: 0 var(--ifm-pre-padding);
+}
+
+[data-theme='dark'] .docusaurus-highlight-code-line {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.containerMDX {
+    position: relative;
+    text-align: center;
+}
+
+.ghostMDX {
+    animation: float 3s ease-out infinite;
+}
+
+@keyframes float {
+    50% {
+        transform: translate(0, 20px);
+    }
+}
+
+.shadowFrameMDX {
+    width: 90px;
+    margin: auto;
+}
+
+.shadowMDX {
+    animation: shrink 3s ease-out infinite;
+    transform-origin: center center;
+}
+.shadowMDX ellipse {
+    transform-origin: center center;
+}
+
+@keyframes shrink {
+    0% {
+        width: 90%;
+        margin: 0 5%;
+    }
+    50% {
+        width: 60%;
+        margin: 0 18%;
+    }
+    100% {
+        width: 90%;
+        margin: 0 5%;
+    }
+}

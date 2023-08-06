@@ -1,0 +1,45 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.content {
+    position: relative;
+    margin-top: 200px;
+}
+
+.section {
+    width: inherit;
+    text-align: center;
+}
+
+.headPortrait {
+    width: 148px;
+    height: 148px;
+    margin-top: -74px;
+    padding: 5px;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px 0 var(--ifm-color-first-shadow);
+
+}
+
+.githubIcon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+}
+
+.name {
+    margin-top: 10px;
+    font-size: 42px;
+    font-weight: 400;
+    line-height: 44px;
+    color: var(--ifm-color-first-font);
+}
+
+.job {
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--ifm-color-first-font);
+}
