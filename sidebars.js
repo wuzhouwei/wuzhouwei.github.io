@@ -38,10 +38,12 @@ const sidebars = {
     },
     {
       type: 'category',
-      label: '代理配置',
+      label: 'react部分组件记录',
       collapsible: true,
       collapsed: false,
-      items: ['tutorial-nginx/nginx','tutorial-nginx/apache'],
+      items: [
+        'tutorial-react/frame_animation',
+      ],
     },
     {
       type: 'category',
@@ -52,12 +54,20 @@ const sidebars = {
     },
     {
       type: 'category',
+      label: '代理配置',
+      collapsible: true,
+      collapsed: false,
+      items: ['tutorial-nginx/nginx','tutorial-nginx/apache'],
+    },
+    {
+      type: 'category',
       label: '其他杂项',
       collapsible: true,
       collapsed: false,
       items: [
           'tutorial-other/naming-notations',
-          'tutorial-other/GitHub_automation'
+          'tutorial-other/GitHub_automation',
+          'tutorial-other/GitHub_automation2'
       ],
     },
     {

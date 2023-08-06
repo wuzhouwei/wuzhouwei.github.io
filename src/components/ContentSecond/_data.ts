@@ -6,27 +6,22 @@ export const data: {
   {
     id: 1,
     keys: '职位：',
-    values: '前段开发'
+    values: '前端开发'
   },
   {
     id: 2,
     keys: '年龄：',
-    values: '26'
+    values: '快奔三了'
   },
   {
     id: 5,
     keys: '码龄：',
-    values: '3年左右'
+    values: '好几年了'
   },
   {
     id: 3,
     keys: '电话：',
-    values: '158****208'
-  },
-  {
-    id: 4,
-    keys: 'email：',
-    values: '1561628221@qq.com'
+    values: '秘密'
   },
 ]
 

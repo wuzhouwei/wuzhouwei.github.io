@@ -14,10 +14,7 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'wuzhouwei', // Usually your GitHub org/user name.
   projectName: 'wuzhouwei.github.io', // Usually your repo name.
-  deploymentBranch:'main',
-  scripts:[ //百度统计
-    {src: 'https://hm.baidu.com/hm.js?e70978813ac95003240f0f04122779fa',  async: true}
-  ],
+  deploymentBranch: 'main',
 
   themes: [
     [
@@ -25,7 +22,7 @@ const config = {
       {
         hashed: true,
         language: ["en", "zh"],
-        ignoreFiles:/^js.*md$/,
+        ignoreFiles: /^js.*md$/,
       },
     ],
   ],
@@ -45,7 +42,7 @@ const config = {
         },
       }),
     ],
-],
+  ],
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -63,16 +60,6 @@ const config = {
             position: 'left',
             label: '记录',
           },
-         /* {
-            href: 'http://139.198.117.53:3081',
-            label: '图片demo',
-            position: 'left',
-          },
-          {
-            href: 'http://139.198.117.53:3082',
-            label: 'blog',
-            position: 'left',
-          },*/
           {
             href: 'https://github.com/wuzhouwei',
             label: 'GitHub',
@@ -81,13 +68,10 @@ const config = {
         ],
       },
       metadata: [
-        {name: 'keywords', content: '个人参考，个人总结，react，js, ts，给自己使用的文档。'},
-        {name: 'author', content: 'wzw'}
+        { name: 'keywords', content: '个人参考，个人总结，react，js, ts，给自己使用的文档。' },
+        { name: 'author', content: 'wzw' }
       ],
-      footer: {
-        style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()}吴某人个人记录. <a href="https://beian.miit.gov.cn/" target="_blank">浙ICP备2021040479号-1</a>`,
-      },
+  
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
