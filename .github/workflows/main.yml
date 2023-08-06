@@ -18,7 +18,8 @@ jobs:
     - name: Deploy
       uses: actions/labeler@v4
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: main
         FOLDER: build
         BUILD_SCRIPT: npm install && npm run build
