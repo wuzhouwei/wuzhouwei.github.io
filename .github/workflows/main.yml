@@ -1,25 +1,31 @@
-name: Deploy Github pages
+name: Deploy Docusaurus
+
 on:
   push:
     branches:
-      - main
+      - main # Change this to your default branch if not main
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Checkout
-      uses: actions/checkout@main
-      with:
-        persist-credentials: false
-    - name: Install and Build
-      run: |
-        npm install
-        npm run-script build 
-    - name: Deploy
-      uses: actions/labeler@v4
-      with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: main
-        FOLDER: build
-        BUILD_SCRIPT: npm install && npm run build
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
