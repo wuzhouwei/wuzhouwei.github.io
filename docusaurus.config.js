@@ -51,7 +51,7 @@ const config = {
         title: 'Youth',
         logo: {
           alt: 'youth Logo',
-          src: 'img/logo.svg',
+          src: 'img/fox.png',
         },
         items: [
           {
@@ -71,7 +71,7 @@ const config = {
         { name: 'keywords', content: '个人参考，个人总结，react，js, ts，给自己使用的文档。' },
         { name: 'author', content: 'wzw' }
       ],
-  
+
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
