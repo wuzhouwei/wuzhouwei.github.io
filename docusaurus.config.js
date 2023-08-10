@@ -1,7 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
+const lightCodeTheme = require('prism-react-renderer/themes/vsDark');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
@@ -21,10 +21,11 @@ const config = {
       require.resolve("@easyops-cn/docusaurus-search-local"),
       {
         hashed: true,
-        language: ["en", "zh"],
+        language: ["zh", "en"],
         ignoreFiles: /^js.*md$/,
       },
     ],
+    ["@docusaurus/theme-live-codeblock", {id: "1"}]
   ],
   presets: [
     [
@@ -45,12 +46,12 @@ const config = {
   ],
 
   themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+  /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Youth',
+        title: '御心狐',
         logo: {
-          alt: 'youth Logo',
+          alt: '御心狐',
           src: 'img/fox.png',
         },
         items: [
@@ -68,8 +69,8 @@ const config = {
         ],
       },
       metadata: [
-        { name: 'keywords', content: '个人参考，个人总结，react，js, ts，给自己使用的文档。' },
-        { name: 'author', content: 'wzw' }
+        {name: 'keywords', content: '个人参考，个人总结，react，js, ts，给自己使用的文档。'},
+        {name: 'author', content: 'wzw'}
       ],
 
       prism: {

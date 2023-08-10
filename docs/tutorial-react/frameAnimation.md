@@ -4,17 +4,23 @@ title: 图片转视频播放效果
 description: 这是一个关于图片转视频播放效果的记录。
 keywords: [img, video, react]
 tags:
+
 - FrameAnimation
----
 
 ---
 
-## 主要代码
+---
+
+import Tabs from '@theme/Tabs'; import TabItem from '@theme/TabItem';
 
 > 此案例在 next.js 中测试
 
-```tsx
-import React, {useEffect, useRef} from "react";
+
+<Tabs>
+<TabItem value="tsx" label="Component">
+
+```tsx title="FrameAnimationProps.tsx"
+import React, {FC, useEffect, useRef} from "react";
 
 interface FrameAnimationProps {
   frames: string[]; //图片文件路径数组
@@ -23,12 +29,12 @@ interface FrameAnimationProps {
   height: number;
 }
 
-const FrameAnimation: React.FC<FrameAnimationProps> = ({
-                                                         frames,
-                                                         fps,
-                                                         width,
-                                                         height,
-                                                       }) => {
+const FrameAnimation: FC<FrameAnimationProps> = ({
+                                                   frames,
+                                                   fps,
+                                                   width,
+                                                   height,
+                                                 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const frameIndex = useRef(0);
   const imgRefs = useRef<HTMLImageElement[]>([]);
@@ -84,19 +90,28 @@ const FrameAnimation: React.FC<FrameAnimationProps> = ({
 export default FrameAnimation;
 ```
 
-## 使用
+</TabItem>
+<TabItem value="ts" label="Usage">
 
-```ts
-import FrameAnimation from "../../FrameAnimation";
+```tsx title="example.tsx"
+import FrameAnimation from "./components/FrameAnimation";
 
 const frames = Array.from(
   {length: 261},
   (_, i) => `/videoImgs/sdsd_${String(i).padStart(4, "0")}.png`
 );
 
-<FrameAnimation frames = {frames}
-fps = {30}
-width = {400}
-height = {599}
+<FrameAnimation
+  frames={frames}
+  fps={30}
+  width={400}
+  height={599}
 />;
 ```
+
+</TabItem>
+</Tabs>
+
+
+
+

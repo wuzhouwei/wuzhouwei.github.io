@@ -11,7 +11,7 @@ export default function Home(): JSX.Element {
     <>
       <Head>
         <meta name="author" content="wzw" />
-        <title>wzw</title>
+        <title>御心狐</title>
       </Head>
       <Layout
         description="Description will go into a meta tag in <head />">
