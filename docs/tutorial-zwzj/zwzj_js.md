@@ -26,7 +26,7 @@ keywords: [js, js基础]
 
 |                    | 宏任务（macrotask）                                          | 微任务（microtask）                                          |
 | :----------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 谁发起 的          | 宿主（Node、浏览器）                                         | JS引擎                                                       |
+| 谁发起的          | 宿主（Node、浏览器）                                         | JS引擎                                                       |
 | 具体事件           | 1. script (可以理解为外层同步代码)2. setTimeout/setInterval3. UI rendering/UI事件4. postMessage，MessageChannel5. setImmediate，I/O（Node.js） | 1. Promise2. MutationObserver3. Object.observe（已废弃；Proxy 对象替代）4. process.nextTick（Node.js） |
 | 谁先运行           | 后运行                                                       | 先运行                                                       |
 | 会触发新一轮Tick吗 | 会                                                           | 不会                                                         |
@@ -1320,7 +1320,6 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
       height: 200px;
       border: 1px solid;
     }
-
 ```
 **3.margin(需要具体宽高)**
 

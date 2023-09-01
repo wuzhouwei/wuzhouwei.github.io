@@ -79,6 +79,15 @@ const sidebars = {
         'tutorial-demo/reptile',
       ],
     },
+    {
+      type: 'category',
+      label: '模块包',
+      collapsible: true,
+      collapsed: false,
+      items: [
+        'tutorial-package/jsbi',
+      ],
+    },
   ],
 
 };
