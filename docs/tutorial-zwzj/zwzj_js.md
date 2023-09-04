@@ -1277,7 +1277,7 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
 
 ### 2.样式居中
 
-```html
+```
  //以这个为例
  <div class="box3">
     <div class="box4">box4</div>
@@ -1285,7 +1285,7 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
 ```
 **1.flex方式**
 
-```css
+```
     .box3{
       display: flex;
       justify-content: center;
@@ -1304,7 +1304,7 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
 
 **2.定位方式**
 
-```css
+```
     .box3{
       position: relative;
       width: 400px;
@@ -1323,7 +1323,7 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
 ```
 **3.margin(需要具体宽高)**
 
-```css
+```
    .box3{
          position: relative;
          width: 400px;
@@ -1342,8 +1342,22 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
        }
 ```
 
+**css文字溢出隐藏为三个点…**
 
-
+>单行
+```
+white-space: nowrap;//不换行
+text-overflow: ellipsis;//将文本溢出显示为（…）
+overflow: hidden;//溢出隐藏。
+```
+>多行
+```
+overflow: hidden;
+text-overflow: ellipsis;
+display: -webkit-box;
+-webkit-line-clamp: 3;
+-webkit-box-orient: vertical;
+```
 
 
 
