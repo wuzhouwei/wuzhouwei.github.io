@@ -99,7 +99,9 @@ import TabItem from '@theme/TabItem';
 function Example(props) {
 
   function getSubStr(address, before, after) {
-    return address ? address.slice(0, before) + '...' + address.slice(address.length - after, address.length) : ''
+    return address
+      ? address.slice(0, before) + '...' + address.slice(address.length - after, address.length)
+      : ''
   }
 
   const test = getSubStr('0xf4168ADb9f13e12FE68Bd64cC7cb2EE10B2D8e8C', 4, 4)
@@ -138,10 +140,8 @@ function Example(props) {
     }
     let count
     integer.length % 3 === 0 
-      ?
-      count = integer.length / 3 - 1 
-      : 
-      count = Math.floor(integer.length / 3)
+      ? count = integer.length / 3 - 1 
+      : count = Math.floor(integer.length / 3)
     
     for (let i = 0; i < count; i++) {
       integer.splice(integer.length - (i + 1) * 3 - i, 0, ',')
@@ -149,10 +149,8 @@ function Example(props) {
     
     let finalStr
     floater.length === 0
-      ? 
-      finalStr = integer.join('') + ' .' + '0'.padEnd(amount, '0') 
-      :
-      finalStr = integer.join('') + ' .' + floater.padEnd(amount, '0')
+      ? finalStr = integer.join('') + ' .' + '0'.padEnd(amount, '0') 
+      : finalStr = integer.join('') + ' .' + floater.padEnd(amount, '0')
     return finalStr
   }
 
