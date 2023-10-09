@@ -439,7 +439,27 @@ c = null;
 
 全局作用域  Window
 
+### 7.call,apply,bind
 
+```js
+const object = {
+  res: "res",
+};
+const res1 = "res1";
+const res2 = "res2";
+
+(function (arg1, arg2) {
+  console.log(this, arg1, arg2, "this");
+}).call(object, res1, res2);
+
+(function (arg1, arg2) {
+  console.log(this, arg1, arg2, "this2");
+}).apply(object, [res1, res2]);
+
+(function (arg1, arg2) {
+  console.log(this, arg1, arg2, "this3");
+}).bind(object, res1, res2)();
+```
 
 ## 4.es6常用总结
 
