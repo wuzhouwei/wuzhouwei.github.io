@@ -377,6 +377,17 @@ var str1 = str.repeat(3);
 console.log(str1)//hahahahahaha
 ```
 
+####  15.trim
+
+>去除空格
+
+```js
+const str = '  js  '
+
+str.trim() // 'js'
+str.trimStart() // 'js  '
+str.trimEnd() // '  js'
+```
 
 
 ### 4.js数据类型
