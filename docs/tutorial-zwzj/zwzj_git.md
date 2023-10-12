@@ -90,6 +90,18 @@ feat(miniprogram): 增加了小程序模板消息相关功能
 ```
 
 
+## 其他
+
+### git 查看已有分支情况：
+
+```git
+git branch -a
+```
+
+### git 拉取更新远程分支列表
+```git
+git remote update origin --prune
+```
 
 
 
