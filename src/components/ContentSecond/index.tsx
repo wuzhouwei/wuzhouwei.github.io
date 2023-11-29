@@ -1,7 +1,7 @@
 import React, {memo} from "react";
 import {data, point} from './_data'
 import styles from './index.module.css'
-
+import Email from  '../Email'
 
 const Index = memo(() => {
 
@@ -23,6 +23,7 @@ const Index = memo(() => {
         {
           point
         }
+        <Email/>
       </div>
     </section>
 
