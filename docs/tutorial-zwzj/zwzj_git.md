@@ -115,3 +115,16 @@ git remote -v
 ```git
 git remote add upstream git@github.com:xxx/xxx.git
 ```
+
+### 版本回退
+
+```git
+通过 git log 找到对应版本号
+
+git reset --hard 592998394d3fb466...
+
+git push -f 强推上去
+
+```
+
+![Alt text](image/git.png)
