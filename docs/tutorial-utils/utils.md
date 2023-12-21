@@ -117,41 +117,30 @@ function Example(props) {
 
 function Example(props) {
 
-    /*
+  /*
   * 3333.1234567 -> 3,333.123456
   */
   function paddingNum (num, amount = 6) {
-    if (!num || num === '0') return amount === 6 ? '0 .000000' : '0 .000000000000000000'
-    let str = ''
-    if (typeof num === 'number') {
-      str = num.toString()
-    } else {
-      str = num
+    const defaultPadding = amount === 6 ? '0 .000000' : '0 .000000000000000000'
+
+    if (!num || num === '0') return defaultPadding
+
+    const str = typeof num === 'number' ? num.toString() : num
+
+    if (str.length <= 2) {
+      return str + ' .' + (amount === 6 ? '000000' : '000000000000000000')
     }
 
-    let integer
-    let floater = ''
-    if (!str.includes('.')) {
-      integer = str.split('')
-    } else {
-      const ary = str.split('.')
-      integer = ary[0].split('')
-      floater = ary[1].substring(0, amount)
-    }
-    let count
-    integer.length % 3 === 0 
-      ? count = integer.length / 3 - 1 
-      : count = Math.floor(integer.length / 3)
-    
+    let [integer, floater, ] = str.includes('.') ? str.split('.') : [str, '', ];
+
+    const count = Math.floor(integer.length / 3)
     for (let i = 0; i < count; i++) {
-      integer.splice(integer.length - (i + 1) * 3 - i, 0, ',')
+      integer = integer.replace(/(\d)(?=(\d{3})+$)/, '$1,')
     }
-    
-    let finalStr
-    floater.length === 0
-      ? finalStr = integer.join('') + ' .' + '0'.padEnd(amount, '0') 
-      : finalStr = integer.join('') + ' .' + floater.padEnd(amount, '0')
-    return finalStr
+
+    floater = floater.substring(0, amount).padEnd(amount, '0')
+
+    return `${integer} .${floater}`
   }
 
   const test = paddingNum('1000001.98888')
