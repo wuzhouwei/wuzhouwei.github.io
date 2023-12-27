@@ -168,26 +168,46 @@ const Parent = memo(() => {
 export default Parent;
 ```
 
-## 2.ref 获取 DOM(类组件)
+## 2.ref 获取 DOM
+
+### (类组件)
 
 ```js
-export default class Parent extends Component {
+class Parent extends Component {
   constructor(props) {
     super(props);
-    this.MyRef = React.createRef();
+    this.myRef = React.createRef();
   }
   handleClick = (_) => {
-    console.log(this.MyRef.current.value);
+    console.log(this.myRef.current.value);
   };
   render() {
     return (
       <div>
-        <input type="text" ref={this.MyRef} />
+        <input type="text" ref={this.myRef} />
         <Button onClick={this.handleClick}>获取</Button>
       </div>
     );
   }
 }
+```
+
+### (函数组件)
+```ts
+const Parent = () => {
+  const myRef = useRef<HTMLInputElement | null>(null);
+
+  const handleClick = () => {
+    console.log(myRef.current?.value);
+  };
+
+  return (
+    <div>
+      <input type="text" ref={myRef} />
+      <button onClick={handleClick}>获取</button>
+    </div>
+  );
+};
 ```
 
 ## 3.React 中的 props 是什么 state 是什么?
