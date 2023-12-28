@@ -1306,6 +1306,13 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
 
 - transform 有很多其它属性值，translate3D（3D变换）,scale（2D缩放）等其他的变换方式
 
+> transform 其他属性
+1. translate(x, y)：平移元素，将元素沿着 x 和 y 轴移动指定的距离。例如：translate(10px, 20px)。
+2. rotate(angle)：旋转元素，按指定角度顺时针方向旋转元素。例如：rotate(45deg)。
+3. scale(x, y)：缩放元素，将元素在 x 和 y 轴上按指定比例进行缩放。例如：scale(1.5, 1)。
+4. skew(x-angle, y-angle)：倾斜元素，按指定角度进行 x 和 y 轴的倾斜。例如：skew(30deg, 20deg)。
+5. matrix(a, b, c, d, e, f)：使用一个 2x3 矩阵来对元素进行变换。这是一个复合变换，可以同时进行平  移、旋转、缩放和倾斜。例如：matrix(1, 0, 0, 1, 50, 100)。
+
 ### 2.样式居中
 
 ```
