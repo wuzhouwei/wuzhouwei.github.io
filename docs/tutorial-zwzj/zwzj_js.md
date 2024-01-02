@@ -475,7 +475,6 @@ const res2 = "res2";
 ### 8.e.stopPropagation(),e.preventDefault()
 > 阻止冒泡及默认行为方式
 ```html
-<body>
 
   <a href="/" id="outer">
     <div id="inner">
@@ -496,7 +495,7 @@ const res2 = "res2";
   });
 
   </script>
-</body>
+
 ```
 
 ### 9.事件委托
@@ -505,7 +504,6 @@ const res2 = "res2";
 > 通过这种方式，可以在处理动态添加或移除的子元素的事件时更为方便。
 
 ```html
-<body>
 
   <ul id="myList">
     <li>Item 1</li>
@@ -537,7 +535,7 @@ const res2 = "res2";
     });
 
   </script>
-</body>
+
 ```
 
 ## 4.es6常用总结
