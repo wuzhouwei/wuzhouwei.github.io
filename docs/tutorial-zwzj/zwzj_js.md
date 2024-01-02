@@ -472,6 +472,33 @@ const res2 = "res2";
 }).bind(object, res1, res2)();
 ```
 
+### 8.e.stopPropagation(),e.preventDefault()
+> 阻止冒泡及默认行为方式
+```js
+<body>
+
+  <a href="/" id="outer">
+    <div id="inner">
+      点击
+    </div>
+  </a>
+  <script>
+
+    document.getElementById('outer').addEventListener('click', function () {
+    console.log("外部a被点击了");
+  });
+
+    document.getElementById('inner').addEventListener('click', function (e) {
+    console.log("内部div被点击了");
+    e.stopPropagation(); // 阻止点击事件继续冒泡
+    e.preventDefault(); // 阻止默认行为
+  });
+
+  </script>
+</body>
+```
+
+
 ## 4.es6常用总结
 
 
