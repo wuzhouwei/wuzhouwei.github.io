@@ -482,6 +482,7 @@ const res2 = "res2";
       点击
     </div>
   </a>
+  
   <script>
 
     document.getElementById('outer').addEventListener('click', function () {
@@ -498,6 +499,33 @@ const res2 = "res2";
 </body>
 ```
 
+### 9.事件委托
+>事件委托（Event Delegation）是一种常见的 JavaScript 编程模式，
+> 通过将事件处理程序添加到父元素而不是直接添加到子元素，从而利用事件冒泡的特性来管理事件。
+> 通过这种方式，可以在处理动态添加或移除的子元素的事件时更为方便。
+
+```js
+<body>
+
+  <ul id="myList">
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+
+  <script>
+
+    document.getElementById('myList').addEventListener('click', function (event) {
+      // 确保点击的是列表项（li 元素）
+      if (event.target.tagName === 'LI') {
+        console.log('Clicked on:', event.target.textContent);
+        // 在这里可以进行相应的处理，比如执行特定操作或者针对该列表项执行其他操作
+      }
+    });
+
+  </script>
+</body>
+```
 
 ## 4.es6常用总结
 
