@@ -515,11 +515,24 @@ const res2 = "res2";
 
   <script>
 
-    document.getElementById('myList').addEventListener('click', function (event) {
-      // 确保点击的是列表项（li 元素）
+    const myList = document.getElementById('myList');
+
+    myList.addEventListener('click', function (event) {
+    // 确保点击的是列表项（li 元素）
       if (event.target.tagName === 'LI') {
-        console.log('Clicked on:', event.target.textContent);
+  
         // 在这里可以进行相应的处理，比如执行特定操作或者针对该列表项执行其他操作
+        //例如：
+        const listItems = myList.querySelectorAll('li');
+    
+        for (let i = 0; i < listItems.length; i++) {
+          console.log(listItems[i]);
+          if (listItems[i] !== event.target) {
+          listItems[i].style.color = ''; // 还原为默认值
+          }
+        }
+        event.target.style.color = 'red';
+
       }
     });
 
