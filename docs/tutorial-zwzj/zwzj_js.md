@@ -474,7 +474,7 @@ const res2 = "res2";
 
 ### 8.e.stopPropagation(),e.preventDefault()
 > 阻止冒泡及默认行为方式
-```js
+```html
 <body>
 
   <a href="/" id="outer">
@@ -504,7 +504,7 @@ const res2 = "res2";
 > 通过将事件处理程序添加到父元素而不是直接添加到子元素，从而利用事件冒泡的特性来管理事件。
 > 通过这种方式，可以在处理动态添加或移除的子元素的事件时更为方便。
 
-```js
+```html
 <body>
 
   <ul id="myList">
