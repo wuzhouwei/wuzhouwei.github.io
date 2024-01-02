@@ -48,7 +48,7 @@ const sidebars = {
       label: "js系列",
       collapsible: true,
       collapsed: true,
-      items: ["tutorial-js/sjms"],
+      items: ["tutorial-js/sjms", "tutorial-js/ysjs"],
     },
     {
       type: "category",
@@ -86,7 +86,7 @@ const sidebars = {
       type: "category",
       label: "utils",
       collapsible: true,
-      collapsed: false,
+      collapsed: true,
       items: ["tutorial-utils/utils"],
     },
   ],
