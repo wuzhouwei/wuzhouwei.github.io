@@ -128,3 +128,26 @@ git push -f 强推上去
 ```
 
 ![Alt text](image/git.png)
+
+
+### 将其他分支的某一次提交合并到另一个分支
+
+**假设 a 和 b 分支,a的某次提交需要合并到b分支**
+
+切到a分支，找到需要合并的哈希值例：a57d0c8b5e506493f41953fce0e1eb56663f8815
+
+```git
+git log
+```
+
+切换到b分支执行
+
+```git
+git cherry-pick a57d0c8b5e506493f41953fce0e1eb56663f8815
+```
+
+如果有冲突，Git 会暂停合并并提示你解决冲突。在解决冲突后，继续合并：
+
+```git
+git cherry-pick --continue
+```
