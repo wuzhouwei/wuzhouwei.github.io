@@ -1,11 +1,12 @@
 ---
 id: reptile
-title: 爬虫demo
+title: 爬虫
 tags:
-  - 爬虫demo
-description: 这是一个关于爬虫案例小demo。
-keywords: [爬虫demo，测试爬取对应内容]
+  - 爬虫
+description: 这是一个关于爬虫案例小case。
+keywords: [ 爬虫case，测试爬取对应内容 ]
 ---
+
 ----
 
 ```js
@@ -71,8 +72,8 @@ const reqs = (url) => {
 
         resolve(allFilms)
       }).catch(err => {
-        reject(err)
-      })
+      reject(err)
+    })
 
   })
 }

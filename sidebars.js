@@ -73,7 +73,7 @@ const sidebars = {
       label: "demo",
       collapsible: true,
       collapsed: true,
-      items: ["tutorial-demo/reptile"],
+      items: ["tutorial-demo/reptile",'tutorial-demo/websocket'],
     },
     {
       type: "category",
