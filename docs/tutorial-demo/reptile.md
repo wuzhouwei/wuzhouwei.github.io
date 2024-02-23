@@ -10,134 +10,66 @@ keywords: [ 爬虫case，测试爬取对应内容 ]
 ----
 
 ```js
-const Koa = require("koa");
-const cheerio = require('cheerio');
-const request = require('superagent');
-const fs = require('fs');
-const axios = require('axios');
-const path = require('path');
-const app = new Koa()
-let allFilms = []
+const express = require("express");
+const cheerio = require("cheerio");
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
 
-let isStop = false;
-let count = 1
-let url = `https://www.win3000.com/pic/mn/p${count}/`
-const timer = setInterval(async () => {
-  ++count
-  let url = `https://www.win3000.com/pic/mn/p${count}/`
+const app = express();
 
-  console.log(count);
-  fn(url)
-  if (isStop) {
-    clearInterval(timer)
-  }
-}, 3000)
+let count = 1;
+const url = `https://www.win3000.com/pic/mn/p${count}/`;
 
-const fn = async (url) => {
-  await reqs(url)
-    .then(res => {
-      isStop = false
-    })
-    .catch(async (err) => {
-      isStop = true
-
-      allFilms = deweight(allFilms)
-
-      await fs.writeFile('./films.json', JSON.stringify(allFilms), function (err) {
-        if (err) {
-          return console.log("往文件写入内容失败：")
-        }
-      })
-
-      await downLoadPictures(allFilms)
-
-    })
-}
-
-const reqs = (url) => {
-  return new Promise((resolve, reject) => {
-    request
-      .get(url)
-      .then(res => {
-
-        const $ = cheerio.load(res.text)
-        $('.mobilesize img').each((i, v) => {
-
-          const obj = {
-            title: $(v).attr('alt'),
-            src: $(v).attr('data-src')
-          }
-          allFilms.push(obj)
-        })
-
-        resolve(allFilms)
-      }).catch(err => {
-      reject(err)
-    })
-
-  })
-}
-
-fn(url)
-
-const downLoadPictures = async (data) => {
-  const result_list = data;
+const reqs = async (url) => {
+  const res = await axios.get(url);
   try {
-    for (let i = 0, len = result_list.length; i < len; i++) {
-      console.log(`开始下载第${i + 1}张图片!`);
-      await downLoadPicture(result_list[i].src);
-      await sleep(3000 * Math.random());
-      console.log(`第${i + 1}张图片下载成功!`);
+    if (res) {
+      const $ = cheerio.load(res.data);
+      $(".mobilesize img").each((i, v) => {
+        const fileName = $(v).attr("alt");
+        const href = $(v).attr("data-src");
+        downLoadPicture(href, fileName);
+      });
     }
-    return Promise.resolve();
-  } catch (e) {
-    console.log('写入数据失败');
-    return Promise.reject(e)
+  } catch (error) {
   }
-}
+};
 
-const downLoadPicture = async (href) => {
+const downLoadPicture = async (url, fileName) => {
   try {
-    const target_path = path.resolve(__dirname, `./public/${href.split('/').pop()}`);
-    console.log(target_path, 'target_pathtarget_path');
-    const response = await axios.get(href, {
-      responseType: 'stream'
+    // 确保 downloads 文件夹存在
+    const downloadsPath = path.join(__dirname, "downloads");
+    if (!fs.existsSync(downloadsPath)) {
+      fs.mkdirSync(downloadsPath);
+    }
+
+    const response = await axios.get(url, {
+      responseType: "stream",
     });
-    await response.data.pipe(fs.createWriteStream(target_path));
-    console.log('写入成功');
-    return Promise.resolve();
-  } catch (e) {
-    console.log('写入数据失败');
-    return Promise.reject(e)
+    const filePath = `./downloads/${fileName}.jpg`; // 设置保存文件的路径
+
+    await response.data.pipe(fs.createWriteStream(filePath));
+
+    return new Promise((resolve, reject) => {
+      response.data.on("end", () => {
+        console.log(`File downloaded successfully to: ${filePath}`);
+        resolve(filePath);
+      });
+
+      response.data.on("error", (error) => {
+        console.error("Error downloading file:", error);
+        reject(error);
+      });
+    });
+  } catch (error) {
+    console.error("Error downloading file:", error);
+    throw error;
   }
-}
+};
 
-const sleep = (time) => {
-  return new Promise((resolve) => {
-    console.log(`自动睡眠中，${time / 1000}秒后重新发送请求......`)
-    setTimeout(() => {
-      resolve();
-    }, time);
-  });
-}
-
-app.use(async ctx => {
-  ctx.body = 'Hello World';
+app.listen(3010, () => {
+  reqs(url);
+  console.log("3010启动成功");
 });
-
-app.listen(3000, () => {
-  console.log('3000启动成功')
-})
-
-// 去重
-const deweight = (arr) => {
-  let obj = {}
-  arr = arr.reduce(function (data, item) {
-    console.log(obj[item.src])
-    obj[item.src] ? '' : obj[item.src] = true && data.push(item)
-    return data;
-  }, [])
-  return arr
-}
-
 ```
