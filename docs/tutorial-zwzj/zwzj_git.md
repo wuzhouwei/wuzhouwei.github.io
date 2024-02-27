@@ -6,7 +6,7 @@ tags:
   - git命令
   - git规范
 description: 这是一个了解git的页面。
-keywords: [git, git命令, git规范]
+keywords: [ git, git命令, git规范 ]
 ---
 
 ---
@@ -65,22 +65,23 @@ git push origin --delete xxx  //以origin仓库为例（可通过git remote查�
 feat(miniprogram): 增加了小程序模板消息相关功能
 ```
 
-> scope 选填表示 commit 的作用范围，如数据层、视图层，也可以是目录名称 subject 必填用于对 commit 进行简短的描述 type 必填表示提交类型。
+> scope 选填表示 commit 的作用范围，如数据层、视图层，也可以是目录名称 subject 必填用于对 commit 进行简短的描述 type
+> 必填表示提交类型。
 
 **值有以下几种：**
 
-|   类型   |                    说明                    |
-| :------: | :----------------------------------------: |
-|   feat   |               新功能 feature               |
-|   fix    |                  修复 bug                  |
-|   docs   |                  文档注释                  |
-|  style   |       代码格式(不影响代码运行的变动)       |
+|    类型    |            说明            |
+|:--------:|:------------------------:|
+|   feat   |       新功能 feature        |
+|   fix    |          修复 bug          |
+|   docs   |           文档注释           |
+|  style   |     代码格式(不影响代码运行的变动)     |
 | refactor | 重构、优化(既不增加新功能，也不是修复 bug) |
-|   perf   |                  性能优化                  |
-|   test   |                  增加测试                  |
-|  chore   |          构建过程或辅助工具的变动          |
-|  revert  |                    回退                    |
-|  build   |                    打包                    |
+|   perf   |           性能优化           |
+|   test   |           增加测试           |
+|  chore   |       构建过程或辅助工具的变动       |
+|  revert  |            回退            |
+|  build   |            打包            |
 
 **用例：**
 
@@ -129,6 +130,18 @@ git push -f 强推上去
 
 ![Alt text](image/git.png)
 
+### 回退多次版本合并提交一次记录
+
+```git
+通过 git log 找到需要回退到的记录的前一个，如果回退两个版本用第三个记录的版本号
+
+git reset --soft c8e8edd4da950718f...
+
+git commit -m "New combined commit message"
+
+git push -f 强推上去
+
+```
 
 ### 将其他分支的某一次提交合并到另一个分支
 
