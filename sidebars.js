@@ -45,6 +45,13 @@ const sidebars = {
     },
     {
       type: "category",
+      label: "web3",
+      collapsible: true,
+      collapsed: true,
+      items: ["tutorial-web3/ethers.js"],
+    },
+    {
+      type: "category",
       label: "js系列",
       collapsible: true,
       collapsed: true,
@@ -73,7 +80,7 @@ const sidebars = {
       label: "demo",
       collapsible: true,
       collapsed: true,
-      items: ["tutorial-demo/reptile",'tutorial-demo/websocket'],
+      items: ["tutorial-demo/reptile", "tutorial-demo/websocket"],
     },
     {
       type: "category",
