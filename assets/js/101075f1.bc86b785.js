@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([[3720],{509:e=>{e.exports=JSON.parse('{"label":"web3","permalink":"/docs/tags/web-3","allTagsPath":"/docs/tags","count":1,"items":[{"id":"tutorial-web3/ethers.js","title":"ethers.js","description":"ethers.js v6 \u5e38\u7528\u65b9\u6cd5\u8bb0\u5f55.","permalink":"/docs/tutorial-web3/ethers.js"}]}')}}]);
