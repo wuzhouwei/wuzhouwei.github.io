@@ -164,3 +164,47 @@ git cherry-pick a57d0c8b5e506493f41953fce0e1eb56663f8815
 ```git
 git cherry-pick --continue
 ```
+
+### 修改某一次commit信息
+
+> 先找到要修改提交记录的地方
+
+```gitexclude
+git log
+```
+
+![Alt text](image/commit/log.png)
+
+> HEAD~N,N为回溯的提交数量（包括您要修改的提交）
+
+```gitexclude
+git rebase -i HEAD~2
+```
+
+![Alt text](image/commit/rebase.png)
+
+> 修改提交信息
+
+```gitexclude
+git commit --amend 
+```
+
+![Alt text](image/commit/amend.png)
+
+> 继续重新基础过程s
+
+```gitexclude
+git rebase --continue
+```
+
+![Alt text](image/commit/continue.png)
+
+> 覆盖远程提交历史。
+
+```gitexclude
+git push --force
+
+git log
+```
+
+![Alt text](image/commit/force.png)
