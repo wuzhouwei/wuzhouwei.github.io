@@ -5,7 +5,7 @@ tags:
   - js基础
   - js常用方法
 description: 这是一个js内容中间的页面，总结了大部分js常用方法及基础介绍。
-keywords: [js, js基础]
+keywords: [ js, js基础 ]
 ---
 
 ----
@@ -22,16 +22,14 @@ keywords: [js, js基础]
 **常见的宏任务**:整体的script代码,setTimeout setInterval
 **常见的微任务**:Promise，process.nextTick
 
-####  **宏任务是由宿主发起的，而微任务由JavaScript自身发起**。
+#### **宏任务是由宿主发起的，而微任务由JavaScript自身发起**。
 
-|                    | 宏任务（macrotask）                                          | 微任务（microtask）                                          |
-| :----------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| 谁发起的          | 宿主（Node、浏览器）                                         | JS引擎                                                       |
-| 具体事件           | 1. script (可以理解为外层同步代码)2. setTimeout/setInterval3. UI rendering/UI事件4. postMessage，MessageChannel5. setImmediate，I/O（Node.js） | 1. Promise2. MutationObserver3. Object.observe（已废弃；Proxy 对象替代）4. process.nextTick（Node.js） |
-| 谁先运行           | 后运行                                                       | 先运行                                                       |
-| 会触发新一轮Tick吗 | 会                                                           | 不会                                                         |
-
-
+|             | 宏任务（macrotask）                                                                                                                | 微任务（microtask）                                                                             |
+|:------------|:------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------------------------------|
+| 谁发起的        | 宿主（Node、浏览器）                                                                                                                  | JS引擎                                                                                       |
+| 具体事件        | 1. script (可以理解为外层同步代码)2. setTimeout/setInterval3. UI rendering/UI事件4. postMessage，MessageChannel5. setImmediate，I/O（Node.js） | 1. Promise2. MutationObserver3. Object.observe（已废弃；Proxy 对象替代）4. process.nextTick（Node.js） |
+| 谁先运行        | 后运行                                                                                                                           | 先运行                                                                                        |
+| 会触发新一轮Tick吗 | 会                                                                                                                             | 不会                                                                                         |
 
 ## 2.浏览器运行机制
 
@@ -59,8 +57,6 @@ keywords: [js, js基础]
 当页面的某部分元素的外观发生了改变，但尺寸、位置、隐藏没有改变，页面进行重绘。（同样，只重绘部分元素，而不是整个页面重绘）  
 **回流的同时往往会伴随着重绘，重绘不一定导致回流。**所以回流导致的代价是大于重绘的。
 
-
-
 ## 3.js基础
 
 ### 1.原型与原型链与继承
@@ -83,14 +79,13 @@ keywords: [js, js基础]
 
 当我们访问对象的一个属性或方法时，它会先在对象自身中寻找，如果有则直接使用，如果没有则会去原型对象中寻找，如果找到则直接使用。如果没有则去原型的原型中寻找,直到找到Object对象的原型，Object对象的原型没有原型，如果在Object原型中依然没有找到，则返回undefined。
 
-
-
 #### es5继承方式
 
 ```js
-function Person(){
-  this.name ='person私有属性'
+function Person() {
+  this.name = 'person私有属性'
 }
+
 /* 
 Person.prototype ={
      constructor:Person, //赋值形式需要指定原型对象,否则没有constructor指向当前对象,适用于多个方法一起
@@ -106,38 +101,43 @@ Person.prototype ={
      return v+1;
  }
  */
-Object.assign(Person.prototype,{  //和上面的是一样的
-  say(v){
-    return v+1
+Object.assign(Person.prototype, {  //和上面的是一样的
+  say(v) {
+    return v + 1
   },
-  add(v){
-    return v+1
+  add(v) {
+    return v + 1
   }
 })
 Student.prototype = new Person()
+
 function Student() {
   this.abc = '私有属性'
 }
+
 let s = new Student()
 ```
 
 #### es6 class继承方式
 
 ```js
-class Person{
-         constructor() {
-            this.a = '私有属性'
-         }
-         static foo(){
-             return '静态方法'
-         }
-     }
-class Student extends Person{
-         constructor(props) {
-             super(props); //super不调用使用this会报错,不传参拿不到父亲的东西结果为undefined
-         }
+class Person {
+  constructor() {
+    this.a = '私有属性'
+  }
 
-     }
+  static foo() {
+    return '静态方法'
+  }
+}
+
+class Student extends Person {
+  constructor(props) {
+    super(props); //super不调用使用this会报错,不传参拿不到父亲的东西结果为undefined
+  }
+
+}
+
 let result = new Student();
 ```
 
@@ -183,41 +183,37 @@ sort()---对数组的元素进行排序。
 
 splice()---用于插入、删除或替换数组的元素。
 
-
-
 ### 3.字符串常用方法:
-
-
 
 #### 1、toLowerCase():
 
->把字符串转为小写，返回新的字符串。
+> 把字符串转为小写，返回新的字符串。
 
 ```js
-var str="Hello World";
-var str1=str.toLowerCase();
+var str = "Hello World";
+var str1 = str.toLowerCase();
 console.log(str); //Hello World
 console.log(str1); //hello world
 ```
 
 #### 2、toUpperCase():
 
->把字符串转为大写，返回新的字符串。
+> 把字符串转为大写，返回新的字符串。
 
 ```js
-var str="hello world";
-var str1=str.toUpperCase();
+var str = "hello world";
+var str1 = str.toUpperCase();
 console.log(str); //hello world
 console.log(str1); //HELLO WORLD
 ```
 
 #### 3、charAt():
 
->返回指定下标位置的字符。如果index不在0-str.length(不包含str.length)之间，返回空字符串。
+> 返回指定下标位置的字符。如果index不在0-str.length(不包含str.length)之间，返回空字符串。
 
 ```js
-var str="hello world";
-var str1=str.charAt(6);
+var str = "hello world";
+var str1 = str.charAt(6);
 console.log(str1); //w
 ```
 
@@ -226,9 +222,9 @@ console.log(str1); //w
 > 返回指定下标位置的字符的unicode编码,这个返回值是 0 - 65535 之间的整数。
 
 ```js
-var str="hello world";
-var str1=str.charCodeAt(1);
-var str2=str.charCodeAt(-2); //NaN
+var str = "hello world";
+var str1 = str.charCodeAt(1);
+var str2 = str.charCodeAt(-2); //NaN
 console.log(str1); //101
 ```
 
@@ -236,45 +232,47 @@ console.log(str1); //101
 
 #### 5、indexOf():
 
->返回某个指定的子字符串在字符串中第一次出现的位置
+> 返回某个指定的子字符串在字符串中第一次出现的位置
 
 ```js
-var str="Hello World";
-var str1=str.indexOf("o");
-var str2=str.indexOf("world");
-var str3=str.indexOf("o",str1+1);
+var str = "Hello World";
+var str1 = str.indexOf("o");
+var str2 = str.indexOf("world");
+var str3 = str.indexOf("o", str1 + 1);
 console.log(str1); //4 默认只找第一个关键字位置，从下标0开始查找
 console.log(str2); //-1 没有找到
 console.log(str3); //7
 ```
 
-**注意：indexOf()方法对大小写敏感，如果子字符串没有找到，返回-1。第二个参数表示从哪个下标开始查找，没有写则默认从下标0开始查找。**
+**注意：indexOf()方法对大小写敏感，如果子字符串没有找到，返回-1。第二个参数表示从哪个下标开始查找，没有写则默认从下标0开始查找。
+**
 
 #### 6、lastIndexOf():
 
->返回某个指定的子字符串在字符串中最后出现的位置。
+> 返回某个指定的子字符串在字符串中最后出现的位置。
 
 ```js
-var str="Hello World";
-var str1=str.lastIndexOf("o");
-var str2=str.lastIndexOf("world");
-var str3=str.lastIndexOf("o",str1-1);
+var str = "Hello World";
+var str1 = str.lastIndexOf("o");
+var str2 = str.lastIndexOf("world");
+var str3 = str.lastIndexOf("o", str1 - 1);
 console.log(str1); //7
 console.log(str2); //-1
 console.log(str3); //4
 ```
 
-**注意：lastIndexOf()方法对大小写敏感，如果子字符串没有找到，返回-1。第二个参数表示从哪个下标开始查找，没有写则默认从最后一个字符处开始查找。**
+**注意：lastIndexOf()方法对大小写敏感，如果子字符串没有找到，返回-1。第二个参数表示从哪个下标开始查找，没有写则默认从最后一个字符处开始查找。
+**
 
 #### 7、slice():
 
->返回字符串中提取的子字符串。
+> 返回字符串中提取的子字符串。
 
 ```js
-var str="Hello World";
-var str1=str.slice(2); //如果只有一个参数，则提取开始下标到结尾处的所有字符串
-var str2=str.slice(2,7); //两个参数，提取下标为2，到下标为7但不包含下标为7的字符串
-var str3=str.slice(-7,-2); //如果是负数，-1为字符串的最后一个字符。提取从下标-7开始到下标-2但不包含下标-2的字符串。前一个数要小于后一个数，否则返回空字符串
+var str = "Hello World";
+var str1 = str.slice(2); //如果只有一个参数，则提取开始下标到结尾处的所有字符串
+var str2 = str.slice(2, 7); //两个参数，提取下标为2，到下标为7但不包含下标为7的字符串
+var str3 = str.slice(-7, -2); //如果是负数，-1为字符串的最后一个字符。提取从下标-7开始到下标-2但不包含下标-2的字符串。前一个数要小于后一个数，否则返回空字符串
 
 console.log(str1); //llo World
 console.log(str2); //llo W
@@ -283,13 +281,13 @@ console.log(str3); //o Wor
 
 #### 8、substring():
 
->提取字符串中介于两个指定下标之间的字符。
+> 提取字符串中介于两个指定下标之间的字符。
 
 ```js
-var str="Hello World";
-var str1=str.substring(2)
-var str2=str.substring(2,2);
-var str3=str.substring(2,7);
+var str = "Hello World";
+var str1 = str.substring(2)
+var str2 = str.substring(2, 2);
+var str3 = str.substring(2, 7);
 console.log(str1); //llo World
 console.log(str2); //如果两个参数相等，返回长度为0的空串
 console.log(str3); //llo W
@@ -299,13 +297,13 @@ console.log(str3); //llo W
 
 #### 9、substr():
 
->返回从指定下标开始指定长度的的子字符串
+> 返回从指定下标开始指定长度的的子字符串
 
 ```js
-var str="Hello World";
-var str1=str.substr(1)
-var str2=str.substr(1,3);
-var str3=str.substr(-3,2);
+var str = "Hello World";
+var str1 = str.substr(1)
+var str2 = str.substr(1, 3);
+var str3 = str.substr(-3, 2);
 console.log(str1); //ello World 
 console.log(str2); //ell
 console.log(str3); //rl
@@ -315,15 +313,15 @@ console.log(str3); //rl
 
 #### 10、split():
 
->把字符串分割成字符串数组。
+> 把字符串分割成字符串数组。
 
 ```js
-var str="AA BB CC DD";
-var string1="1:2:3:4:5";
-var str1=str.split("");//如果把空字符串 ("")用作分割符，那么字符串的每个字符之间都会被分割
-var str2=str.split(" "); //以空格为分隔符
-var str3=str.split("",4); //4指定返回数组的最大长度
-var str4=string1.split(":");
+var str = "AA BB CC DD";
+var string1 = "1:2:3:4:5";
+var str1 = str.split("");//如果把空字符串 ("")用作分割符，那么字符串的每个字符之间都会被分割
+var str2 = str.split(" "); //以空格为分隔符
+var str3 = str.split("", 4); //4指定返回数组的最大长度
+var str4 = string1.split(":");
 console.log(str1); // ["A", "A", " ", "B", "B", " ", "C", "C", " ", "D", "D"]
 console.log(str2); //["AA" "BB" "CC" "DD"]
 console.log(str3); //["A", "A", " ", "B"]
@@ -332,30 +330,30 @@ console.log(str4); // ["1", "2", "3", "4", "5"]
 
 #### 11、replace():
 
->在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
+> 在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
 
 ```js
-var str="hello WORLD";
-var reg=/o/ig; //o为要替换的关键字，不能加引号，否则替换不生效，i忽略大小写，g表示全局查找。
-var str1=str.replace(reg,"**")
+var str = "hello WORLD";
+var reg = /o/ig; //o为要替换的关键字，不能加引号，否则替换不生效，i忽略大小写，g表示全局查找。
+var str1 = str.replace(reg, "**")
 console.log(str1); //hell** W**RLD
 ```
 
 #### 12、match():
 
->返回所有查找的关键字内容的数组。
+> 返回所有查找的关键字内容的数组。
 
 ```js
-var str="To be or not to be";
-var reg=/to/ig;
-var str1=str.match(reg);
+var str = "To be or not to be";
+var reg = /to/ig;
+var str1 = str.match(reg);
 console.log(str1); //["To", "to"]
 console.log(str.match("Hello")); //null
 ```
 
 #### 13.includes
 
->检测是否包含指定字符串
+> 检测是否包含指定字符串
 
 ```js
 var str = "hello world";
@@ -367,19 +365,19 @@ var result1 = str.includes("o", 8);
 console.log(result1);//false
 ```
 
-####  14.repeat
+#### 14.repeat
 
->重复字符串
+> 重复字符串
 
 ```js
-var str ="haha"
+var str = "haha"
 var str1 = str.repeat(3);
 console.log(str1)//hahahahahaha
 ```
 
-####  15.trim
+#### 15.trim
 
->去除空格
+> 去除空格
 
 ```js
 const str = '  js  '
@@ -388,7 +386,6 @@ str.trim() // 'js'
 str.trimStart() // 'js  '
 str.trimEnd() // '  js'
 ```
-
 
 ### 4.js数据类型
 
@@ -419,6 +416,7 @@ stack为自动分配的内存空间，它由系统自动释放；而heap则是�
 ### 5.闭包
 
 **闭包有3个特性：**
+
 1. 函数嵌套函数
 
 2. 函数内部可以引用函数外部的参数和变量
@@ -430,9 +428,11 @@ function init() {
   var name = "Mozilla"; // name 是一个被 init 创建的局部变量
   function displayName() { // displayName() 是内部函数，一个闭包
     alert(name); // 使用了父函数中声明的变量
-   }
+  }
+
   displayName();
 }
+
 let c = init();
 ```
 
@@ -448,7 +448,7 @@ c = null;
 
 块作用域 {}
 
-全局作用域  Window
+全局作用域 Window
 
 ### 7.call,apply,bind
 
@@ -478,80 +478,78 @@ const res2 = "res2";
 
 ```html
 
-  <a href="/" id="outer">
-    <div id="inner">
-      点击
-    </div>
-  </a>
-  
-  <script>
+<a href="/" id="outer">
+  <div id="inner">
+    点击
+  </div>
+</a>
 
-    document.getElementById('outer').addEventListener('click', function () {
+<script>
+
+  document.getElementById('outer').addEventListener('click', function () {
     console.log("外部a被点击了");
   });
 
-    document.getElementById('inner').addEventListener('click', function (e) {
+  document.getElementById('inner').addEventListener('click', function (e) {
     console.log("内部div被点击了");
     e.stopPropagation(); // 阻止点击事件继续冒泡
     e.preventDefault(); // 阻止默认行为
   });
 
-  </script>
+</script>
 
 ```
 
 ### 9.事件委托
 
->事件委托（Event Delegation）是一种常见的 JavaScript 编程模式，
+> 事件委托（Event Delegation）是一种常见的 JavaScript 编程模式，
 > 通过将事件处理程序添加到父元素而不是直接添加到子元素，从而利用事件冒泡的特性来管理事件。
 > 通过这种方式，可以在处理动态添加或移除的子元素的事件时更为方便。
 
 ```html
 
-  <ul id="myList">
-    <li>Item 1</li>
-    <li>Item 2</li>
-    <li>Item 3</li>
-  </ul>
+<ul id="myList">
+  <li>Item 1</li>
+  <li>Item 2</li>
+  <li>Item 3</li>
+</ul>
 
-  <script>
+<script>
 
-    const myList = document.getElementById('myList');
+  const myList = document.getElementById('myList');
 
-    myList.addEventListener('click', function (event) {
+  myList.addEventListener('click', function (event) {
     // 确保点击的是列表项（li 元素）
-      if (event.target.tagName === 'LI') {
-  
-        // 在这里可以进行相应的处理，比如执行特定操作或者针对该列表项执行其他操作
-        //例如：
-        const listItems = myList.querySelectorAll('li');
-    
-        for (let i = 0; i < listItems.length; i++) {
-          console.log(listItems[i]);
-          if (listItems[i] !== event.target) {
+    if (event.target.tagName === 'LI') {
+
+      // 在这里可以进行相应的处理，比如执行特定操作或者针对该列表项执行其他操作
+      //例如：
+      const listItems = myList.querySelectorAll('li');
+
+      for (let i = 0; i < listItems.length; i++) {
+        console.log(listItems[i]);
+        if (listItems[i] !== event.target) {
           listItems[i].style.color = ''; // 还原为默认值
-          }
         }
-        event.target.style.color = 'red';
-
       }
-    });
+      event.target.style.color = 'red';
 
-  </script>
+    }
+  });
+
+</script>
 
 ```
 
 ## 4.es6常用总结
 
-
-
 ### 1.let，const
 
-let  （变量）
+let （变量）
 
 const （常量）
 
->**特征**
+> **特征**
 
 1. 不允许重复声明
 
@@ -561,7 +559,7 @@ const （常量）
 
 ### 2.模板字符串
 
->模板字符串提供了另一种做字符串组合的方法。
+> 模板字符串提供了另一种做字符串组合的方法。
 
 ```js
 const user = 'world';
@@ -589,7 +587,7 @@ const content = `
 **等同于：**
 
 ```js
-[1, 2, 3].map((function(x) {
+[1, 2, 3].map((function (x) {
   return x + 1;
 }).bind(this));
 ```
@@ -602,16 +600,18 @@ const content = `
 
 ```js
 // 引入全部并且重命名
-import A2 as A4 from './lib.js'
+import * as A4 from './lib.js'
 
 // 引入部分并且重命名
 import {A1 as A3} from './lib.js'
 
 // 导出默认
-const A2 = function() {}
+const A2 = function () {
+}
 export default A2
 // 部分导出，需 import { A1 } from './lib.js'; 引入
-export const  A1 = function() {}
+export const A1 = function () {
+}
 ```
 
 ### 5.Promises
@@ -630,29 +630,36 @@ new Promise(
     // reject('失败') // 数据处理出错
   }
 ).then(
-  (res) => {console.log(res)},  // 成功
-  (err) => {console.log(err)} // 失败
+  (res) => {
+    console.log(res)
+  },  // 成功
+  (err) => {
+    console.log(err)
+  } // 失败
 )
 ```
 
 **promise**
 
-resolve作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；  
+resolve作用是，将Promise对象的状态从“未完成”变为“成功”（即从 pending 变为
+resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；  
 reject作用是，将Promise对象的状态从“未完成”变为“失败”（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。
 
 **promise有三个状态：**
+
 1. pending[待定]初始状态
 2. fulfilled[实现]操作成功
-3. rejected[被否决]操作失败 
+3. rejected[被否决]操作失败
 
 当promise状态发生改变，就会触发then()里的响应函数处理后续步骤；  
 promise状态一经改变，不会再变。
 
 ***Promise对象的状态改变，只有两种可能:***
-- 从pending变为fulfilled
-- 从pending变为rejected。  
 
->这两种情况只要发生，状态就凝固了，不会再变了。
+- 从pending变为fulfilled
+- 从pending变为rejected。
+
+> 这两种情况只要发生，状态就凝固了，不会再变了。
 
 **.then()**
 
@@ -665,60 +672,71 @@ promise状态一经改变，不会再变。
 
 **错误处理**
 
->Promise会自动捕获内部异常，并交给rejected响应函数处理。
+> Promise会自动捕获内部异常，并交给rejected响应函数处理。
 
 错误处理两种做法：
+
 - 第一种：reject('错误信息').then(() => {}, () => {错误处理逻辑})
 - 第二种：throw new Error('错误信息').catch( () => {错误处理逻辑})
 
 推荐使用第二种方式，更加清晰好读，并且可以捕获前面所有的错误（可以捕获N个then回调错误）
 
 ```js
-function fn(){
-  return new Promise((resolve,reject)=>{
-    setTimeout(function(){
+function fn() {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
       reject('我是错误')
-    },1000)
+    }, 1000)
   })
 }
-fn().then(res=>{}),()=>{console.log(err);} //逗号紧跟.then
+
+fn().then(res => {
+}), () => {
+  console.log(err);
+} //逗号紧跟.then
 ```
 
 ```js
-function fn(){
-  return new Promise((resolve,reject)=>{
-    setTimeout(function(){
+function fn() {
+  return new Promise((resolve, reject) => {
+    setTimeout(function () {
       throw new Error('我是错误')
-    },1000)
+    }, 1000)
   })
 }
-fn().then(res=>{}).catch(err=>{console.log(err);}) //链式.catch
+
+fn().then(res => {
+}).catch(err => {
+  console.log(err);
+}) //链式.catch
 ```
 
 **Promise.all() 批量执行**
+
 ```js
 Promise.all([p1, p2, p3]) //全部promise表达式运行结束的结果
 ```
 
 **Promise.race()**
+
 ```js
 Promise.race([p1, p2, p3])  //只要有一个promise表达式运行有结果就返回
 ```
-
 
 ### 6.解构赋值
 
 ```js
 let obj = {
-  a:'值1',
-  b:'值2'
+  a: '值1',
+  b: '值2'
 }
-const {a,b} = obj
-console.log(a,b); // 值1 值2
+const {a, b} = obj
+console.log(a, b); // 值1 值2
 
-function fn({a=1,b,c=1,...d}){ //添加默认值
-  console.log(a,b,c,d); //值1 值2 1 {}
+function fn({a = 1, b, c = 1, ...d}) { //添加默认值
+  console.log(a, b, c, d); //值1 值2 1 {}
 }
+
 fn(obj)
 ```
 
@@ -726,7 +744,7 @@ fn(obj)
 
 **1.扩展运算符**
 
->**警告：传值时扩展运算符要在最后面**
+> **警告：传值时扩展运算符要在最后面**
 
 ```
 let arr = ['值1','值2','值3']
@@ -737,8 +755,8 @@ console.log(...arr); //值1 值2 值3
 
 ```js
 [1, 2, 3].includes(2)     // true
-[1, 2, 3].includes(4)     // false
-[1, 2, NaN].includes(NaN) // true
+  [1, 2, 3].includes(4)     // false
+  [1, 2, NaN].includes(NaN) // true
 ```
 
 **3.数组展平 flat，flatMap()**
@@ -758,7 +776,7 @@ console.log(...arr); //值1 值2 值3
 [1, 2, [3, [4, 5]]].flat()
 // [1, 2, 3, [4, 5]]
 
-[1, 2, [3, [4, 5]]].flat(2)
+  [1, 2, [3, [4, 5]]].flat(2)
 // [1, 2, 3, 4, 5]
 ```
 
@@ -778,7 +796,8 @@ console.log(...arr); //值1 值2 值3
 // [1, 2, 4, 5]
 ```
 
-`flatMap()`方法对原数组的每个成员执行一个函数（相当于执行`Array.prototype.map()`），然后对返回值组成的数组执行`flat()`方法。该方法返回一个新数组，不改变原数组。
+`flatMap()`方法对原数组的每个成员执行一个函数（相当于执行`Array.prototype.map()`），然后对返回值组成的数组执行`flat()`
+方法。该方法返回一个新数组，不改变原数组。
 
 ```js
 // 相当于 [[2, 4], [3, 6], [4, 8]].flat()
@@ -799,9 +818,13 @@ console.log(...arr); //值1 值2 值3
 `flatMap()`方法的参数是一个遍历函数，该函数可以接受三个参数，分别是当前数组成员、当前数组成员的位置（从零开始）、原数组。
 
 ```js
-arr.flatMap(function callback(currentValue[, index[, array]]) {
+arr.flatMap(function callback(currentValue[, index[, array
+]])
+{
   // ...
-}[, thisArg])
+}
+[, thisArg]
+)
 ```
 
 `flatMap()`方法还可以有第二个参数，用来绑定遍历函数里面的`this`。
@@ -844,7 +867,7 @@ arr.sort(unstableSorting)
 ### 8.Set  数据结构
 
 ```js
-let arr = Array.from(new Set([1,2,3,4,4,5,2]))
+let arr = Array.from(new Set([1, 2, 3, 4, 4, 5, 2]))
 console.log(arr);
 ```
 
@@ -857,7 +880,7 @@ console.log(arr);
 
 **Iterator （遍历器）**
 
->**Iterator 的遍历过程是这样的。**
+> **Iterator 的遍历过程是这样的。**
 
 - 创建一个指针对象，指向当前数据结构的起始位置。也就是说，遍历器对象本质上，就是一个指针对象。
 
@@ -867,8 +890,7 @@ console.log(arr);
 
 - 不断调用指针对象的`next`方法，直到它指向数据结构的结束位置。
 
-
->**原生具备 Iterator 接口的数据结构如下。**
+> **原生具备 Iterator 接口的数据结构如下。**
 
 - Array
 - Map
@@ -935,11 +957,14 @@ for (let a of arr) {
 }
 ```
 
-上面代码表明，`for...in`循环读取键名，`for...of`循环读取键值。如果要通过`for...of`循环，获取数组的索引，可以借助数组实例的`entries`方法和`keys`方法（参见《数组的扩展》一章）。
+上面代码表明，`for...in`循环读取键名，`for...of`循环读取键值。如果要通过`for...of`
+循环，获取数组的索引，可以借助数组实例的`entries`方法和`keys`方法（参见《数组的扩展》一章）。
 
 ### 数组实例的 entries()，keys() 和 values()
 
-ES6 提供三个新的方法——`entries()`，`keys()`和`values()`——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用`for...of`循环进行遍历，唯一的区别是`keys()`是对键名的遍历、`values()`是对键值的遍历，`entries()`是对键值对的遍历。
+ES6 提供三个新的方法——`entries()`，`keys()`和`values()`
+——用于遍历数组。它们都返回一个遍历器对象（详见《Iterator》一章），可以用`for...of`循环进行遍历，唯一的区别是`keys()`
+是对键名的遍历、`values()`是对键值的遍历，`entries()`是对键值对的遍历。
 
 ```javascript
 for (let index of ['a', 'b'].keys()) {
@@ -983,7 +1008,6 @@ for (let i of arr) {
 1. `async`和`await`，比起星号和`yield`，语义更清楚了。`async`表示函数里有异步操作，`await`表示紧跟在后面的表达式需要等待结果。
 
 2. 返回值是 Promise。
-
 
 `async`函数的返回值是 Promise 对象，这比 Generator 函数的返回值是 Iterator 对象方便多了。你可以用`then`方法指定下一步的操作。
 
@@ -1030,22 +1054,26 @@ asyncPrint('hello world', 50);
 - 不是promise对象
 - 是promise对象
 
-> 如果不是 promise , await会阻塞后面的代码，先执行async外面的同步代码，同步代码执行完，再回到async内部，把这个非promise的东西，作为 await表达式的结果。  
-> 如果它等到的是一个 promise 对象，await 也会暂停async后面的代码，先执行async外面的同步代码，等着 Promise 对象 fulfilled，然后把 resolve 的参数作为 await 表达式的运算结果。
+> 如果不是 promise , await会阻塞后面的代码，先执行async外面的同步代码，同步代码执行完，再回到async内部，把这个非promise的东西，作为
+> await表达式的结果。  
+> 如果它等到的是一个 promise 对象，await 也会暂停async后面的代码，先执行async外面的同步代码，等着 Promise 对象
+> fulfilled，然后把 resolve 的参数作为 await 表达式的运算结果。
 
 ```js
-function fn(){
-  return new Promise((res,rej)=>{
+function fn() {
+  return new Promise((res, rej) => {
     console.log('1');
     res('') //如果未返回结果 2，3将不会执行 结果为 1，4
-  }).then(res=>{
+  }).then(res => {
     console.log('2');
   })
 }
-async function fn2(){
+
+async function fn2() {
   await fn()
   console.log('3');
 }
+
 fn2()
 console.log('4');
 //结果1,4,2,3
@@ -1054,31 +1082,35 @@ console.log('4');
 ### 11.class常用语法与继承
 
 ```js
-class Point{
+class Point {
   constructor(props) {
-    this.x= props.x;
-    this.y= props.y;
+    this.x = props.x;
+    this.y = props.y;
   }
-  say(){
-    return this.x+this.y
+
+  say() {
+    return this.x + this.y
   }
 }
+
 /*  
 let point = new Point({x:1,y:2})
  console.log(point,point.say());// Point {x: 1, y: 2} 3
  */
 
-class Point2 extends Point{
+class Point2 extends Point {
   constructor(props) {
     super(props);
     this.z = props.z
   }
-  say2(){
-    return this.x +this.y +this.z
+
+  say2() {
+    return this.x + this.y + this.z
   }
 }
-let point2 = new Point2({x:1,y:2,z:3})
-console.log(point2,point2.say(),point2.say2());//Point2 {x: 1, y: 2, z: 3} 3 6
+
+let point2 = new Point2({x: 1, y: 2, z: 3})
+console.log(point2, point2.say(), point2.say2());//Point2 {x: 1, y: 2, z: 3} 3 6
 ```
 
 ## 5.常用方法
@@ -1088,7 +1120,7 @@ console.log(point2,point2.say(),point2.say2());//Point2 {x: 1, y: 2, z: 3} 3 6
 **第一种：es6方法，自带去重**
 
 ```js
-let arr = [1,2,3,4,3,4]
+let arr = [1, 2, 3, 4, 3, 4]
 let arr2 = Array.from(new Set(arr))
 console.log(arr2);
 ```
@@ -1096,34 +1128,39 @@ console.log(arr2);
 **第二种：利用indexOf 判断自己创建的数组是否存在 不存在则为 -1**
 
 ```js
-let arr = [1,2,3,4,3,4]
-function unique(arg){
+let arr = [1, 2, 3, 4, 3, 4]
+
+function unique(arg) {
   let arr2 = [];
   for (let i = 0; i < arg.length; i++) {
-    if(arr2.indexOf(arg[i]) === -1){
+    if (arr2.indexOf(arg[i]) === -1) {
       arr2.push(arr[i])
     }
   }
   return arr2
 }
+
 unique(arr)
 ```
 
 **第三种：利用es6方法includes判断是否为真**
 
 ```js
-let arr = [1,2,3,4,3,4]
-function unique(arg){
+let arr = [1, 2, 3, 4, 3, 4]
+
+function unique(arg) {
   let arr2 = [];
   for (let i = 0; i < arg.length; i++) {
-    if(!arr2.includes(arg[i])){
+    if (!arr2.includes(arg[i])) {
       arr2.push(arr[i])
     }
   }
   return arr2
 }
+
 unique(arr)
 ```
+
 ### 1.常用数组查重方案
 
 **第一种：利用indexOf，lastIndexOf查找第一个后最后一个去对比**
@@ -1134,41 +1171,43 @@ function duplicates(arr) {
   for (let i = 0; i < arr.length; i++) {
     if (arr.indexOf(arr[i]) !== arr.lastIndexOf(arr[i]) && !arr2.includes(arr[i])) {
       arr2.push(arr[i])
-      }
     }
-      return arr2
- }
- let arr = [1, 2, 4, 4, 3, 3, 1, 5, 3]
- console.log(duplicates(arr)); //[1，3，4]
+  }
+  return arr2
+}
+
+let arr = [1, 2, 4, 4, 3, 3, 1, 5, 3]
+console.log(duplicates(arr)); //[1，3，4]
 ```
 
 ### 2.深拷贝
 
 **方法1：递归方式**
 
->使用`in`检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回true
+> 使用`in`检查对象中是否含有某个属性时，如果对象中没有但是原型中有，也会返回true
 
 ```js
 let obj = {
-  a:'1',
-  b:'2'
+  a: '1',
+  b: '2'
 };
-let arr = [1,2];
-function deepClone(deep){
-  let obj =  deep instanceof Array ? [] :{}
+let arr = [1, 2];
+
+function deepClone(deep) {
+  let obj = deep instanceof Array ? [] : {}
   for (const key in deep) {
-    let k = deep[key]; 
-    if(typeof(k) === 'object' && k !== null){
-      obj[key] = deepClone(k) ;
-    }else{
-      obj[key] = k ;
+    let k = deep[key];
+    if (typeof (k) === 'object' && k !== null) {
+      obj[key] = deepClone(k);
+    } else {
+      obj[key] = k;
     }
   }
   return obj;
 }
 
-let obj2=  deepClone(obj);
-obj2.c ='3';
+let obj2 = deepClone(obj);
+obj2.c = '3';
 let arr2 = deepClone(arr);
 arr2.push(3);
 console.log(obj); // {a: "1", b: "2"}
@@ -1205,11 +1244,11 @@ function deepClone(obj) {
 **第二种：序列化与反序列化（基础版，有函数就没用了，不推荐使用）**
 
 ```js
-let obj = { a:'1',b:'2'};
-let arr = [1,2];
+let obj = {a: '1', b: '2'};
+let arr = [1, 2];
 
 let obj2 = JSON.parse(JSON.stringify(obj))
-obj2.c ='3';
+obj2.c = '3';
 
 let arr2 = JSON.parse(JSON.stringify(arr))
 arr2.push(3);
@@ -1224,74 +1263,78 @@ console.log(arr2);// [1,2,3]
 
 **1.防抖**
 
->概念：就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。
+> 概念：就是指触发事件后在 n 秒内函数只能执行一次，如果在 n 秒内又触发了事件，则会重新计算函数执行时间。
 
 ```js
-const fn =  function(){
+const fn = function () {
   console.log(1);
 }
+
 //防抖
-function debounce(fn,time){
+function debounce(fn, time) {
   let timer = null;
-  return function (){
+  return function () {
     let that = this
     let args = [].slice.call(arguments)
     clearTimeout(timer)
-    timer = setTimeout(function(){
-      fn.apply(that,args)
-    },time)
+    timer = setTimeout(function () {
+      fn.apply(that, args)
+    }, time)
   }
 }
-const fn2 = debounce(fn,500)
+
+const fn2 = debounce(fn, 500)
 window.onscroll = fn2
 ```
 
 **2.节流**
 
->概念：就是指连续触发事件但是在 n 秒中只执行一次函数
+> 概念：就是指连续触发事件但是在 n 秒中只执行一次函数
 
 ```js
-const fn =  function(){
+const fn = function () {
   console.log(1);
 }
+
 //节流
-function throttle(fn,time){
+function throttle(fn, time) {
   let firstDate = new Date()
-  return function (){
+  return function () {
     let args = [].slice.call(arguments)
     let t = (new Date() - firstDate) >= time
-    if(t){
-      fn.apply(this,args)
-      firstDate =  new Date()
+    if (t) {
+      fn.apply(this, args)
+      firstDate = new Date()
     }
   }
 
 }
-const fn2 = throttle(fn,1000)
+
+const fn2 = throttle(fn, 1000)
 window.onscroll = fn2
 ```
 
 ### 4.类型判断
 
->如果只是判断Array 与Object对象的话用 instanceof 就可以了
+> 如果只是判断Array 与Object对象的话用 instanceof 就可以了
 
 ```js
-let arr =[]
+let arr = []
 let obj = {}
-console.log(arr instanceof Array ); //true
-console.log(arr instanceof Object ); //true
+console.log(arr instanceof Array); //true
+console.log(arr instanceof Object); //true
 ```
 
->其他利用 Object.prototype.toString.call()
+> 其他利用 Object.prototype.toString.call()
 
 ```js
-let arr =[];
+let arr = [];
 let obj = {};
 let num = 1
-let str ='1'
+let str = '1'
 let bool = true;
 let nu = null;
-let un =undefined;
+let un = undefined;
 console.log(Object.prototype.toString.call(arr)); // [object Array]
 console.log(Object.prototype.toString.call(obj)); // [object Object]
 console.log(Object.prototype.toString.call(num)); // [object Number]
@@ -1315,16 +1358,17 @@ let person = [
 
 let obj = {};
 //方法1
-person = person.reduce((cur,next) => {
+person = person.reduce((cur, next) => {
   obj[next.id] ? "" : obj[next.id] = true && cur.push(next);
   return cur;
-},[]) //设置cur默认类型为数组，并且初始值为空的数组
+}, []) //设置cur默认类型为数组，并且初始值为空的数组
 //方法2
-function uniqueFunc(arr:any[], uniId:String){
+function uniqueFunc(arr: any[], uniId: String) {
   const res = new Map();
   return arr.filter((item) => !res.has(item[uniId]) && res.set(item[uniId], 1));
 }
-console.log(person,uniqueFunc(person, 'id'));
+
+console.log(person, uniqueFunc(person, 'id'));
 ```
 
 ## 6.css常用方法
@@ -1334,15 +1378,16 @@ console.log(person,uniqueFunc(person, 'id'));
 只推荐一种：
 
 ```css
-.clearfix: after {   /*伪元素是行内元素 正常浏览器清除浮动方法*/
-  content: "";
-  display: block;
-  height: 0;
-  clear: both;
-  visibility: hidden;
+.clearfix: after { /*伪元素是行内元素 正常浏览器清除浮动方法*/
+    content: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 }
+
 .clearfix {
-* zoom: 1; /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
+    *zoom: 1; /*ie6清除浮动的方式 *号只有IE6-IE7执行，其他浏览器不执行*/
 }
 ```
 
@@ -1353,11 +1398,9 @@ console.log(person,uniqueFunc(person, 'id'));
 
 如需转换成number类型比较则将其中一个类型进行运算符来触发隐式转换
 例:
-'23'<'3'   //true
-'23'*1<'3' //false
+  '23' < '3'   //true
+'23' * 1 < '3' //false
 ```
-
-
 
 ## css方面
 
@@ -1376,11 +1419,13 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
 - transform 有很多其它属性值，translate3D（3D变换）,scale（2D缩放）等其他的变换方式
 
 > transform 其他属性
+
 1. translate(x, y)：平移元素，将元素沿着 x 和 y 轴移动指定的距离。例如：translate(10px, 20px)。
 2. rotate(angle)：旋转元素，按指定角度顺时针方向旋转元素。例如：rotate(45deg)。
 3. scale(x, y)：缩放元素，将元素在 x 和 y 轴上按指定比例进行缩放。例如：scale(1.5, 1)。
 4. skew(x-angle, y-angle)：倾斜元素，按指定角度进行 x 和 y 轴的倾斜。例如：skew(30deg, 20deg)。
-5. matrix(a, b, c, d, e, f)：使用一个 2x3 矩阵来对元素进行变换。这是一个复合变换，可以同时进行平  移、旋转、缩放和倾斜。例如：matrix(1, 0, 0, 1, 50, 100)。
+5. matrix(a, b, c, d, e, f)：使用一个 2x3 矩阵来对元素进行变换。这是一个复合变换，可以同时进行平
+   移、旋转、缩放和倾斜。例如：matrix(1, 0, 0, 1, 50, 100)。
 
 ### 2.样式居中
 
@@ -1390,6 +1435,7 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
     <div class="box4">box4</div>
  </div>
 ```
+
 **1.flex方式**
 
 ```
@@ -1428,6 +1474,7 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
       border: 1px solid;
     }
 ```
+
 **3.margin(需要具体宽高)**
 
 ```
@@ -1451,13 +1498,16 @@ transition:all 2s; 所有属性从开始到变化结束需要两秒；
 
 **css文字溢出隐藏为三个点…**
 
->单行
+> 单行
+
 ```
 white-space: nowrap;//不换行
 text-overflow: ellipsis;//将文本溢出显示为（…）
 overflow: hidden;//溢出隐藏。
 ```
->多行
+
+> 多行
+
 ```
 overflow: hidden;
 text-overflow: ellipsis;
