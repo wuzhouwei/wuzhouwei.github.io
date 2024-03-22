@@ -598,9 +598,13 @@ const content = `
 
 比如：
 
-```js
-// 引入全部并且重命名
+```ts
+// 引入全部并且重命名 
+// 这种语法用于导入 CommonJS 模块或者当您使用 TypeScript 时开启了 esModuleInterop 选项。
 import * as A4 from './lib.js'
+
+// 这种语法用于导入 ES6 模块或者 TypeScript 中的模块。
+import A4 from './lib.js'
 
 // 引入部分并且重命名
 import {A1 as A3} from './lib.js'
