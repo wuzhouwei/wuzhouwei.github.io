@@ -30,6 +30,7 @@ const sidebars = {
       collapsed: false, //是否收缩
       items: [
         "tutorial-zwzj/zwzj_js",
+        "tutorial-zwzj/zwzj_css",
         "tutorial-zwzj/zwzj_react",
         "tutorial-zwzj/zwzj_git",
         "tutorial-zwzj/zwzj_webpack",
