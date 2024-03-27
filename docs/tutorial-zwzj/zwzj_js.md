@@ -190,8 +190,8 @@ splice()---用于插入、删除或替换数组的元素。
 > 把字符串转为小写，返回新的字符串。
 
 ```js
-var str = "Hello World";
-var str1 = str.toLowerCase();
+const str = "Hello World";
+const str1 = str.toLowerCase();
 console.log(str); //Hello World
 console.log(str1); //hello world
 ```
@@ -201,8 +201,8 @@ console.log(str1); //hello world
 > 把字符串转为大写，返回新的字符串。
 
 ```js
-var str = "hello world";
-var str1 = str.toUpperCase();
+const str = "hello world";
+const str1 = str.toUpperCase();
 console.log(str); //hello world
 console.log(str1); //HELLO WORLD
 ```
@@ -212,8 +212,8 @@ console.log(str1); //HELLO WORLD
 > 返回指定下标位置的字符。如果index不在0-str.length(不包含str.length)之间，返回空字符串。
 
 ```js
-var str = "hello world";
-var str1 = str.charAt(6);
+const str = "hello world";
+const str1 = str.charAt(6);
 console.log(str1); //w
 ```
 
@@ -222,9 +222,9 @@ console.log(str1); //w
 > 返回指定下标位置的字符的unicode编码,这个返回值是 0 - 65535 之间的整数。
 
 ```js
-var str = "hello world";
-var str1 = str.charCodeAt(1);
-var str2 = str.charCodeAt(-2); //NaN
+const str = "hello world";
+const str1 = str.charCodeAt(1);
+const str2 = str.charCodeAt(-2); //NaN
 console.log(str1); //101
 ```
 
@@ -235,10 +235,10 @@ console.log(str1); //101
 > 返回某个指定的子字符串在字符串中第一次出现的位置
 
 ```js
-var str = "Hello World";
-var str1 = str.indexOf("o");
-var str2 = str.indexOf("world");
-var str3 = str.indexOf("o", str1 + 1);
+const str = "Hello World";
+const str1 = str.indexOf("o");
+const str2 = str.indexOf("world");
+const str3 = str.indexOf("o", str1 + 1);
 console.log(str1); //4 默认只找第一个关键字位置，从下标0开始查找
 console.log(str2); //-1 没有找到
 console.log(str3); //7
@@ -252,10 +252,10 @@ console.log(str3); //7
 > 返回某个指定的子字符串在字符串中最后出现的位置。
 
 ```js
-var str = "Hello World";
-var str1 = str.lastIndexOf("o");
-var str2 = str.lastIndexOf("world");
-var str3 = str.lastIndexOf("o", str1 - 1);
+const str = "Hello World";
+const str1 = str.lastIndexOf("o");
+const str2 = str.lastIndexOf("world");
+const str3 = str.lastIndexOf("o", str1 - 1);
 console.log(str1); //7
 console.log(str2); //-1
 console.log(str3); //4
@@ -269,10 +269,10 @@ console.log(str3); //4
 > 返回字符串中提取的子字符串。
 
 ```js
-var str = "Hello World";
-var str1 = str.slice(2); //如果只有一个参数，则提取开始下标到结尾处的所有字符串
-var str2 = str.slice(2, 7); //两个参数，提取下标为2，到下标为7但不包含下标为7的字符串
-var str3 = str.slice(-7, -2); //如果是负数，-1为字符串的最后一个字符。提取从下标-7开始到下标-2但不包含下标-2的字符串。前一个数要小于后一个数，否则返回空字符串
+const str = "Hello World";
+const str1 = str.slice(2); //如果只有一个参数，则提取开始下标到结尾处的所有字符串
+const str2 = str.slice(2, 7); //两个参数，提取下标为2，到下标为7但不包含下标为7的字符串
+const str3 = str.slice(-7, -2); //如果是负数，-1为字符串的最后一个字符。提取从下标-7开始到下标-2但不包含下标-2的字符串。前一个数要小于后一个数，否则返回空字符串
 
 console.log(str1); //llo World
 console.log(str2); //llo W
@@ -284,10 +284,10 @@ console.log(str3); //o Wor
 > 提取字符串中介于两个指定下标之间的字符。
 
 ```js
-var str = "Hello World";
-var str1 = str.substring(2)
-var str2 = str.substring(2, 2);
-var str3 = str.substring(2, 7);
+const str = "Hello World";
+const str1 = str.substring(2)
+const str2 = str.substring(2, 2);
+const str3 = str.substring(2, 7);
 console.log(str1); //llo World
 console.log(str2); //如果两个参数相等，返回长度为0的空串
 console.log(str3); //llo W
@@ -300,10 +300,10 @@ console.log(str3); //llo W
 > 返回从指定下标开始指定长度的的子字符串
 
 ```js
-var str = "Hello World";
-var str1 = str.substr(1)
-var str2 = str.substr(1, 3);
-var str3 = str.substr(-3, 2);
+const str = "Hello World";
+const str1 = str.substr(1)
+const str2 = str.substr(1, 3);
+const str3 = str.substr(-3, 2);
 console.log(str1); //ello World 
 console.log(str2); //ell
 console.log(str3); //rl
@@ -316,12 +316,12 @@ console.log(str3); //rl
 > 把字符串分割成字符串数组。
 
 ```js
-var str = "AA BB CC DD";
-var string1 = "1:2:3:4:5";
-var str1 = str.split("");//如果把空字符串 ("")用作分割符，那么字符串的每个字符之间都会被分割
-var str2 = str.split(" "); //以空格为分隔符
-var str3 = str.split("", 4); //4指定返回数组的最大长度
-var str4 = string1.split(":");
+const str = "AA BB CC DD";
+const string1 = "1:2:3:4:5";
+const str1 = str.split("");//如果把空字符串 ("")用作分割符，那么字符串的每个字符之间都会被分割
+const str2 = str.split(" "); //以空格为分隔符
+const str3 = str.split("", 4); //4指定返回数组的最大长度
+const str4 = string1.split(":");
 console.log(str1); // ["A", "A", " ", "B", "B", " ", "C", "C", " ", "D", "D"]
 console.log(str2); //["AA" "BB" "CC" "DD"]
 console.log(str3); //["A", "A", " ", "B"]
@@ -333,9 +333,9 @@ console.log(str4); // ["1", "2", "3", "4", "5"]
 > 在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。
 
 ```js
-var str = "hello WORLD";
-var reg = /o/ig; //o为要替换的关键字，不能加引号，否则替换不生效，i忽略大小写，g表示全局查找。
-var str1 = str.replace(reg, "**")
+const str = "hello WORLD";
+const reg = /o/ig; //o为要替换的关键字，不能加引号，否则替换不生效，i忽略大小写，g表示全局查找。
+const str1 = str.replace(reg, "**")
 console.log(str1); //hell** W**RLD
 ```
 
@@ -344,9 +344,9 @@ console.log(str1); //hell** W**RLD
 > 返回所有查找的关键字内容的数组。
 
 ```js
-var str = "To be or not to be";
-var reg = /to/ig;
-var str1 = str.match(reg);
+const str = "To be or not to be";
+const reg = /to/ig;
+const str1 = str.match(reg);
 console.log(str1); //["To", "to"]
 console.log(str.match("Hello")); //null
 ```
@@ -356,12 +356,12 @@ console.log(str.match("Hello")); //null
 > 检测是否包含指定字符串
 
 ```js
-var str = "hello world";
+const str = "hello world";
 
-var result = str.includes("o");
+const result = str.includes("o");
 console.log(result);//true
 
-var result1 = str.includes("o", 8);
+const result1 = str.includes("o", 8);
 console.log(result1);//false
 ```
 
@@ -370,8 +370,8 @@ console.log(result1);//false
 > 重复字符串
 
 ```js
-var str = "haha"
-var str1 = str.repeat(3);
+const str = "haha"
+const str1 = str.repeat(3);
 console.log(str1)//hahahahahaha
 ```
 
@@ -425,7 +425,7 @@ stack为自动分配的内存空间，它由系统自动释放；而heap则是�
 
 ```js
 function init() {
-  var name = "Mozilla"; // name 是一个被 init 创建的局部变量
+  let name = "Mozilla"; // name 是一个被 init 创建的局部变量
   function displayName() { // displayName() 是内部函数，一个闭包
     alert(name); // 使用了父函数中声明的变量
   }
@@ -433,7 +433,7 @@ function init() {
   displayName();
 }
 
-let c = init();
+const c = init();
 ```
 
 **销毁闭包：**
@@ -758,7 +758,7 @@ console.log(...arr); //值1 值2 值3
 **2.数组实例的 includes()**
 
 ```js
-[1, 2, 3].includes(2)     // true
+  [1, 2, 3].includes(2)     // true
   [1, 2, 3].includes(4)     // false
   [1, 2, NaN].includes(NaN) // true
 ```
@@ -950,7 +950,7 @@ arr.forEach(function (element, index) {
 JavaScript 原有的`for...in`循环，只能获得对象的键名，不能直接获取键值。ES6 提供`for...of`循环，允许遍历获得键值。
 
 ```js
-var arr = ['a', 'b', 'c', 'd'];
+const arr = ['a', 'b', 'c', 'd'];
 
 for (let a in arr) {
   console.log(a); // 0 1 2 3
