@@ -9,27 +9,35 @@ tags:
   - HOC
   - Hooks
 description: 这是一个react部分总结的页面。
-keywords: [react部分总结, react, 父子组件, 生命周期, HOC, redux, Hooks等]
+keywords: [ react部分总结, react, 父子组件, 生命周期, HOC, redux, Hooks等 ]
 ---
 
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ## 1.父子组件传值
 
-### 父组件调用子组件方法及传参(类组件)
+### 父组件调用子组件方法及传参
 
-```js
+<Tabs>
+
+<TabItem value="类组件" >
+
+```jsx
 //父组件
 
 export default class Parent extends Component {
-  handleF=()=>{
-     this.refsz.method('父组件调用了')
+  handleF = () => {
+    this.refsz.method('父组件调用了')
   }
+
   render() {
     return (
-      <div >
+      <div>
         <Button onClick={this.handleF}>父组件按钮</Button>
-        <Children refsZ={el=>this.refsz=el}/>
+        <Children refsZ={el => this.refsz = el}/>
       </div>
     )
   }
@@ -41,21 +49,25 @@ export default class Children extends Component {
   componentDidMount() {
     this.props.refsZ(this)
   }
-  method(arg){
-      console.log(arg,'子组件的方法')
+
+  method(arg) {
+    console.log(arg, '子组件的方法')
   }
-    render() {
-        return  <></>
-    }
+
+  render() {
+    return <></>
+  }
 }
 
 ```
 
-### 父组件调用子组件方法及传参(函数组件)
+</TabItem>
+
+<TabItem value="函数组件" >
 
 ```tsx
-import React, { memo, useRef, useImperativeHandle, forwardRef } from "react";
-import { Button } from "antd";
+import React, {memo, useRef, useImperativeHandle, forwardRef} from "react";
+import {Button} from "antd";
 
 //子组件
 
@@ -87,7 +99,7 @@ const Parent = memo(() => {
   return (
     <div>
       <Button onClick={handleClick}>我是父按钮</Button>
-      <Children ref={childRef} />
+      <Children ref={childRef}/>
     </div>
   );
 });
@@ -95,18 +107,27 @@ const Parent = memo(() => {
 export default Parent;
 ```
 
-### 子组件调用父组件方法及传参(类组件)
+</TabItem>
 
-```js
+</Tabs>
+
+### 子组件调用父组件方法及传参
+
+<Tabs>
+
+<TabItem value="类组件" >
+
+```jsx
 //父组件
 
 export default class Parent extends Component {
-  handleF=(...arg)=>{
-     console.log(arg,'(我是父组件方法)')
+  handleF = (...arg) => {
+    console.log(arg, '(我是父组件方法)')
   }
+
   render() {
     return (
-      <div >
+      <div>
         <Children click={this.handleF}/>
       </div>
     )
@@ -116,30 +137,33 @@ export default class Parent extends Component {
 //子组件
 
 export default class Children extends Component {
-  handleClick=(e)=>{
-    this.props.click('(子组件调用父组件方法给父组件传值)','(方案2)',e)
+  handleClick = (e) => {
+    this.props.click('(子组件调用父组件方法给父组件传值)', '(方案2)', e)
   }
-    render() {
+
+  render() {
     const {click} = this.props
-        return  <>
-          <Button onClick={click.bind(this,'(子组件调用父组件方法给父组件传值)','(方案1)')}>
-          	我是子组件的按钮1
-          </Button>
-          <Button onClick={this.handleClick}>我是子组件的按钮2</Button>
-        </>
-    }
+    return <>
+      <Button onClick={click.bind(this, '(子组件调用父组件方法给父组件传值)', '(方案1)')}>
+        我是子组件的按钮1
+      </Button>
+      <Button onClick={this.handleClick}>我是子组件的按钮2</Button>
+    </>
+  }
 }
 ```
 
-### 子组件调用父组件方法及传参(函数组件)
+</TabItem>
+
+<TabItem value="函数组件" >
 
 ```tsx
-import React, { memo, FC } from "react";
-import { Button } from "antd";
+import React, {memo, FC} from "react";
+import {Button} from "antd";
 
 //子组件
 
-const Children: FC<{ click: (...arg: any) => void }> = memo(({ click }) => {
+const Children: FC<{ click: (...arg: any) => void }> = memo(({click}) => {
   return (
     <div>
       <Button onClick={() => click("子组件调用成功", "其他")}>
@@ -160,7 +184,7 @@ const Parent = memo(() => {
 
   return (
     <div>
-      <Children click={handleClick} />
+      <Children click={handleClick}/>
     </div>
   );
 });
@@ -168,23 +192,31 @@ const Parent = memo(() => {
 export default Parent;
 ```
 
+</TabItem>
+
+</Tabs>
+
 ## 2.ref 获取 DOM
 
-### (类组件)
+<Tabs>
 
-```js
+<TabItem value="类组件" >
+
+```jsx
 class Parent extends Component {
   constructor(props) {
     super(props);
     this.myRef = React.createRef();
   }
+
   handleClick = (_) => {
     console.log(this.myRef.current.value);
   };
+
   render() {
     return (
       <div>
-        <input type="text" ref={this.myRef} />
+        <input type="text" ref={this.myRef}/>
         <Button onClick={this.handleClick}>获取</Button>
       </div>
     );
@@ -192,8 +224,11 @@ class Parent extends Component {
 }
 ```
 
-### (函数组件)
-```ts
+</TabItem>
+
+<TabItem value="函数组件" >
+
+```tsx
 const Parent = () => {
   const myRef = useRef<HTMLInputElement | null>(null);
 
@@ -203,22 +238,33 @@ const Parent = () => {
 
   return (
     <div>
-      <input type="text" ref={myRef} />
-      <button onClick={handleClick}>获取</button>
+      <input type="text" ref={myRef}/>
+      <button
+        onClick={handleClick}> 获取
+      </button>
     </div>
-  );
+  )
+    ;
 };
 ```
+
+</TabItem>
+
+</Tabs>
 
 ## 3.React 中的 props 是什么 state 是什么?
 
 > **props**
 
-**`props(只读组件)`是一个从外部传进组件的参数，主要作为就是从父组件向子组件传递数据，它具有可读性和不变性，只能通过外部组件主动传入新的`props`来重新渲染子组件，否则子组件的`props`以及展现形式不会改变。**
+**`props(只读组件)`
+是一个从外部传进组件的参数，主要作为就是从父组件向子组件传递数据，它具有可读性和不变性，只能通过外部组件主动传入新的`props`
+来重新渲染子组件，否则子组件的`props`以及展现形式不会改变。**
 
 > **state**
 
-**`state(状态)`的主要作用是用于组件保存、控制以及修改自己的状态，它只能在`constructor`中初始化，它算是组件的私有属性，不可通过外部访问和修改，只能通过组件内部的`this.setState`来修改，修改`state`属性会导致组件的重新渲染。**
+**`state(状态)`的主要作用是用于组件保存、控制以及修改自己的状态，它只能在`constructor`
+中初始化，它算是组件的私有属性，不可通过外部访问和修改，只能通过组件内部的`this.setState`来修改，修改`state`属性会导致组件的重新渲染。
+**
 
 **区别**
 
@@ -236,10 +282,13 @@ const Parent = () => {
 
 > **React 16.3+**
 
-- **getDerivedStateFromProps(nextProps, prevState):** 在调用`render()`之前调用，并在 _每次_ 渲染时调用。 需要使用派生状态的情况是很罕见得。值得阅读 [如果你需要派生状态](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html).
+- **getDerivedStateFromProps(nextProps, prevState):** 在调用`render()`之前调用，并在 _每次_ 渲染时调用。
+  需要使用派生状态的情况是很罕见得。值得阅读 [如果你需要派生状态](https://reactjs.org/blog/2018/06/07/you-probably-dont-need-derived-state.html).
 - **componentDidMount:** 首次渲染后调用，所有得 Ajax 请求、DOM 或状态更新、设置事件监听器都应该在此处发生。
-- **shouldComponentUpdate:** 确定组件是否应该更新。 默认情况下，它返回`true`。 如果你确定在更新状态或属性后不需要渲染组件，则可以返回`false`值。 它是一个提高性能的好地方，因为它允许你在组件接收新属性时阻止重新渲染。
-- **getSnapshotBeforeUpdate(nextProps, prevState):** 在最新的渲染输出提交给 DOM 前将会立即调用，这对于从 DOM 捕获信息（比如：滚动位置）很有用。
+- **shouldComponentUpdate:** 确定组件是否应该更新。 默认情况下，它返回`true`。
+  如果你确定在更新状态或属性后不需要渲染组件，则可以返回`false`值。 它是一个提高性能的好地方，因为它允许你在组件接收新属性时阻止重新渲染。
+- **getSnapshotBeforeUpdate(nextProps, prevState):** 在最新的渲染输出提交给 DOM 前将会立即调用，这对于从 DOM
+  捕获信息（比如：滚动位置）很有用。
 - **componentDidUpdate:** 它主要用于更新 DOM 以响应 prop 或 state 更改。 如果`shouldComponentUpdate()`返回`false`，则不会触发。
 - **componentWillUnmount** 当一个组件被从 DOM 中移除时，该方法被调用，取消网络请求或者移除与该组件相关的事件监听程序等应该在这里进行。
 
@@ -247,15 +296,21 @@ const Parent = () => {
 
 - **componentWillMount:** 在组件`render()`前执行，用于根组件中的应用程序级别配置。应该避免在该方法中引入任何的副作用或订阅。
 - **componentDidMount:** 首次渲染后调用，所有得 Ajax 请求、DOM 或状态更新、设置事件监听器都应该在此处发生。
-- **componentWillReceiveProps (nextProps):** 在组件接收到新属性前调用，若你需要更新状态响应属性改变（例如，重置它），你可能需对比`this.props`和`nextProps`并在该方法中使用`this.setState()`处理状态改变。
-- **shouldComponentUpdate(nextProps,nextState):** 确定组件是否应该更新。 默认情况下，它返回`true`。 如果你确定在更新状态或属性后不需要渲染组件，则可以返回`false`值。 它是一个提高性能的好地方，因为它允许你在组件接收新属性时阻止重新渲染。
-- **componentWillUpdate (nextProps,nextState):** 当`shouldComponentUpdate`返回`true`后重新渲染组件之前执行，注意你不能在这调用`this.setState()`
-- **componentDidUpdate(prevProps,prevState):** 它主要用于更新 DOM 以响应 prop 或 state 更改。 如果`shouldComponentUpdate()`返回`false`，则不会触发。
+- **componentWillReceiveProps (nextProps):**
+  在组件接收到新属性前调用，若你需要更新状态响应属性改变（例如，重置它），你可能需对比`this.props`和`nextProps`
+  并在该方法中使用`this.setState()`处理状态改变。
+- **shouldComponentUpdate(nextProps,nextState):** 确定组件是否应该更新。 默认情况下，它返回`true`。
+  如果你确定在更新状态或属性后不需要渲染组件，则可以返回`false`值。 它是一个提高性能的好地方，因为它允许你在组件接收新属性时阻止重新渲染。
+- **componentWillUpdate (nextProps,nextState):** 当`shouldComponentUpdate`返回`true`
+  后重新渲染组件之前执行，注意你不能在这调用`this.setState()`
+- **componentDidUpdate(prevProps,prevState):** 它主要用于更新 DOM 以响应 prop 或 state 更改。
+  如果`shouldComponentUpdate()`返回`false`，则不会触发。
 - **componentWillUnmount:** 当一个组件被从 DOM 中移除时，该方法被调用，取消网络请求或者移除与该组件相关的事件监听程序等应该在这里进行。
 
 ## 5.什么是高阶组件（HOC）?
 
-_高阶组件_(_HOC_) 就是一个函数，且该函数接受一个组件作为参数，并返回一个新的组件，它只是一种模式，这种模式是由`react`自身的组合性质必然产生的。
+_高阶组件_(_HOC_) 就是一个函数，且该函数接受一个组件作为参数，并返回一个新的组件，它只是一种模式，这种模式是由`react`
+自身的组合性质必然产生的。
 
 我们将它们称为**纯组件**，因为它们可以接受任何动态提供的子组件，但它们不会修改或复制其输入组件中的任何行为。
 
@@ -293,13 +348,13 @@ const WrappedComponent = (config = {}, Comp: React.ComponentType) => {
   } 
 */
 
-const Instance = WrappedComponent({ name: "test" }, App);
+const Instance = WrappedComponent({name: "test"}, App);
 // const Instance = WrappedComponent({name: 'test'})(App)
 export default Instance;
 ```
 
 ```tsx
-import React, { useEffect, useState, ComponentType, memo } from "react";
+import React, {useEffect, useState, ComponentType, memo} from "react";
 
 const url = () =>
   fetch("https://jsonplaceholder.typicode.com/users/2?_delay=2000");
@@ -334,7 +389,7 @@ import ReactDOMServer from "react-dom/server";
 
 import App from "./App";
 
-ReactDOMServer.renderToString(<App />);
+ReactDOMServer.renderToString(<App/>);
 ```
 
 此方法将以字符串形式输出常规 HTML，然后将其作为服务器响应的一部分放在页面正文中。在客户端，React 检测预渲染的内容并无缝地衔接。
@@ -353,7 +408,8 @@ ReactDOMServer.renderToString(<App />);
 
 **工作流程**
 
-**工作流程**是 view 调用 store 的 dispatch 接收 action 传入 store，reducer 进行 state 操作，view 通过 store 提供的 getState 获取最新的数据
+**工作流程**是 view 调用 store 的 dispatch 接收 action 传入 store，reducer 进行 state 操作，view 通过 store 提供的
+getState 获取最新的数据
 
 ## 9.常用 Hook
 
@@ -365,8 +421,8 @@ ReactDOMServer.renderToString(<App />);
 ### useState
 
 ```tsx
-import React, { memo, useState } from "react";
-import { Button } from "antd";
+import React, {memo, useState} from "react";
+import {Button} from "antd";
 
 const Example = memo(() => {
   const [count, setCount] = useState<number>(0);
@@ -385,8 +441,8 @@ export default Example;
 ### useEffect
 
 ```tsx
-import React, { memo, useEffect, useState } from "react";
-import { Button } from "antd";
+import React, {memo, useEffect, useState} from "react";
+import {Button} from "antd";
 
 /*
  * useEffect第二参数的情况：
@@ -460,8 +516,8 @@ export default Example;
 ### useRef
 
 ```tsx
-import React, { memo, useEffect, useState, useRef } from "react";
-import { Button } from "antd";
+import React, {memo, useEffect, useState, useRef} from "react";
+import {Button} from "antd";
 
 /*
  * 使用场景:
@@ -495,7 +551,7 @@ const Example = memo(() => {
 
   return (
     <>
-      <input type="text" ref={inputRef} />
+      <input type="text" ref={inputRef}/>
       <Button
         onClick={() => {
           // 通过 .current 拿到当前 dom 元素
@@ -527,15 +583,15 @@ export default Example;
 ### useMemo-useCallback
 
 ```tsx
-import React, { memo, FC, useState, useMemo, useCallback } from "react";
-import { Button } from "antd";
+import React, {memo, FC, useState, useMemo, useCallback} from "react";
+import {Button} from "antd";
 
 /*
  * 子组件没有从父组件传入的props或者传入的props仅仅为简单数值类型使用memo即可。
  *
  * */
 
-const Child: FC<any> = memo(({ data, click }) => {
+const Child: FC<any> = memo(({data, click}) => {
   console.log("Child");
   return (
     <>
@@ -544,7 +600,7 @@ const Child: FC<any> = memo(({ data, click }) => {
     </>
   );
 });
-const Child2: FC<any> = memo(({ data }) => {
+const Child2: FC<any> = memo(({data}) => {
   console.log("Child2");
   return (
     <>
@@ -555,7 +611,7 @@ const Child2: FC<any> = memo(({ data }) => {
 });
 
 const Example = () => {
-  const [userInfo, setUserInfo] = useState({ name: "名字", weight: 35 });
+  const [userInfo, setUserInfo] = useState({name: "名字", weight: 35});
   const [count, setCount] = useState(0);
 
   const state = useMemo(() => {
@@ -570,8 +626,8 @@ const Example = () => {
 
   return (
     <>
-      <Child data={count} click={click} />
-      <Child2 data={state} />
+      <Child data={count} click={click}/>
+      <Child2 data={state}/>
     </>
   );
 };
