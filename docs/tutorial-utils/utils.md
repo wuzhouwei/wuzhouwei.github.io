@@ -1,10 +1,10 @@
 ---
 id: utils
 title: 常见工具类函数
-description: 常见工具类函数整理. 
-keywords: [time,]
+description: 常见工具类函数整理.
+keywords: [ time, ]
 tags:
-- time
+  - time
 
 ---
 
@@ -12,7 +12,7 @@ tags:
 
 ### 时间格式类
 
-import Tabs from '@theme/Tabs'; 
+import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
@@ -20,8 +20,8 @@ import TabItem from '@theme/TabItem';
 
   ```js dayFormatUTC
   export const c = (time) => {
-    return dayjs.utc(time).format('MMM-DD-YYYY h:mm:ss A +[UTC]')
-  }
+  return dayjs.utc(time).format('MMM-DD-YYYY h:mm:ss A +[UTC]')
+}
   ```
 
   </TabItem>
@@ -29,29 +29,29 @@ import TabItem from '@theme/TabItem';
 
   ```js timeAgoFormat
   export function timeAgoFormat(cellValue) {
-    const timeNow = new Date().getTime()
-    const compare = timeNow - cellValue
-    if (!cellValue) {
-      return '--'
-    }
-    if (compare < 0) {
-      return '0 secs ago'
-    }
-    if (compare < 1000 * 60) {
-      const secs = Math.floor(compare / 1000)
-      return `${secs} ${secs <= 1 ? 'sec' : 'secs'} ago`
-    }
-    if (compare < 1000 * 60 * 60) {
-      const minutes = Math.floor(compare / (1000 * 60))
-      return `${minutes} ${minutes <= 1 ? 'min' : 'mins'} ago`
-    }
-    if (compare < 1000 * 60 * 60 * 24) {
-      const hours = Math.floor(compare / (1000 * 60 * 60))
-      const minutes = Math.floor((compare % (1000 * 60 * 60)) / (1000 * 60))
-      return minutes === 0 ? `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ago` : `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ${minutes} ${minutes <= 1 ? 'min' : 'mins'} ago`
-    }
-    return dayjs.utc(cellValue).format('YYYY-MM-DD HH:mm:ss')
+  const timeNow = new Date().getTime()
+  const compare = timeNow - cellValue
+  if (!cellValue) {
+    return '--'
   }
+  if (compare < 0) {
+    return '0 secs ago'
+  }
+  if (compare < 1000 * 60) {
+    const secs = Math.floor(compare / 1000)
+    return `${secs} ${secs <= 1 ? 'sec' : 'secs'} ago`
+  }
+  if (compare < 1000 * 60 * 60) {
+    const minutes = Math.floor(compare / (1000 * 60))
+    return `${minutes} ${minutes <= 1 ? 'min' : 'mins'} ago`
+  }
+  if (compare < 1000 * 60 * 60 * 24) {
+    const hours = Math.floor(compare / (1000 * 60 * 60))
+    const minutes = Math.floor((compare % (1000 * 60 * 60)) / (1000 * 60))
+    return minutes === 0 ? `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ago` : `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ${minutes} ${minutes <= 1 ? 'min' : 'mins'} ago`
+  }
+  return dayjs.utc(cellValue).format('YYYY-MM-DD HH:mm:ss')
+}
   ```
 
   </TabItem>
@@ -59,25 +59,25 @@ import TabItem from '@theme/TabItem';
 
   ```js customFormatUTC
    export const customFormatUTC = (time) => {
-    const now = Date.now()
-    const diffMilliseconds = now - time
-  
-    const seconds = Math.floor(diffMilliseconds / 1000)
-    const minutes = Math.floor(seconds / 60)
-    const hours = Math.floor(minutes / 60)
-    const days = Math.floor(hours / 24)
-  
-    if (days > 0) {
-      return `${days} ${days <= 1 ? 'day' : 'days'} ${hours % 24} ${hours % 24 <= 1 ? 'hr' : 'hrs'} ago`
-    } else if (hours > 0) {
-      const remainingMinutes = minutes % 60
-      return remainingMinutes === 0 ? `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ago` : `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ${remainingMinutes} ${remainingMinutes <= 1 ? 'min' : 'mins'} ago`
-    } else if (minutes > 0) {
-      return `${minutes} ${minutes <= 1 ? 'min' : 'mins'} ago`
-    } else {
-      return `${seconds} ${seconds <= 1 ? 'sec' : 'secs'} ago`
-    }
+  const now = Date.now()
+  const diffMilliseconds = now - time
+
+  const seconds = Math.floor(diffMilliseconds / 1000)
+  const minutes = Math.floor(seconds / 60)
+  const hours = Math.floor(minutes / 60)
+  const days = Math.floor(hours / 24)
+
+  if (days > 0) {
+    return `${days} ${days <= 1 ? 'day' : 'days'} ${hours % 24} ${hours % 24 <= 1 ? 'hr' : 'hrs'} ago`
+  } else if (hours > 0) {
+    const remainingMinutes = minutes % 60
+    return remainingMinutes === 0 ? `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ago` : `${hours} ${hours <= 1 ? 'hr' : 'hrs'} ${remainingMinutes} ${remainingMinutes <= 1 ? 'min' : 'mins'} ago`
+  } else if (minutes > 0) {
+    return `${minutes} ${minutes <= 1 ? 'min' : 'mins'} ago`
+  } else {
+    return `${seconds} ${seconds <= 1 ? 'sec' : 'secs'} ago`
   }
+}
   ```
 
   </TabItem>
@@ -85,14 +85,13 @@ import TabItem from '@theme/TabItem';
 
   ```js package
   import dayjs from 'dayjs'
-  import utc from 'dayjs/plugin/utc'
-  
-  dayjs.extend(utc)
+import utc from 'dayjs/plugin/utc'
+
+dayjs.extend(utc)
   ```
 
   </TabItem>
 </Tabs>
-
 
 ```tsx live
 
@@ -120,7 +119,7 @@ function Example(props) {
   /*
   * 3333.1234567 -> 3,333.123456
   */
-  function paddingNum (num, amount = 6) {
+  function paddingNum(num, amount = 6) {
     const defaultPadding = amount === 6 ? '0 .000000' : '0 .000000000000000000'
 
     if (!num || num === '0') return defaultPadding
@@ -131,7 +130,7 @@ function Example(props) {
       return str + ' .' + (amount === 6 ? '000000' : '000000000000000000')
     }
 
-    let [integer, floater, ] = str.includes('.') ? str.split('.') : [str, '', ];
+    let [integer, floater,] = str.includes('.') ? str.split('.') : [str, '',];
 
     const count = Math.floor(integer.length / 3)
     for (let i = 0; i < count; i++) {
@@ -152,4 +151,13 @@ function Example(props) {
 
 ```
 
-
+```ts
+/**
+ * 等待指定的毫秒数后 resolve 的函数
+ * @param ms 要等待的毫秒数
+ * @returns 返回一个 Promise，在指定的毫秒数后 resolve
+ */
+export function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+```
