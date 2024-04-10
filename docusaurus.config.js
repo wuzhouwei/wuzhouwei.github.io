@@ -15,6 +15,7 @@ const config = {
   organizationName: "wuzhouwei", // Usually your GitHub org/user name.
   projectName: "wuzhouwei.github.io", // Usually your repo name.
   deploymentBranch: "main",
+  tagline: "记录自己的点点滴滴.",
 
   themes: [
     [
@@ -43,6 +44,13 @@ const config = {
         },
         googleAnalytics: {
           trackingID: "UA-288395864-1",
+        },
+        sitemap: {
+          lastmod: "date",
+          changefreq: "daily",
+          priority: 0.5,
+          ignorePatterns: ["/tags/**"],
+          filename: "sitemap.xml",
         },
       }),
     ],
