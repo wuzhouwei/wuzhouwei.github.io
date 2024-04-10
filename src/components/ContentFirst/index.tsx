@@ -9,7 +9,7 @@ const Index = memo(() => {
     <div className={styles.content}>
       <section className={styles.section}>
         <div>
-          <img src={fox} alt="" className={styles.headPortrait} />
+          <img src={fox} alt="fox" className={styles.headPortrait} />
         </div>
         <div className={styles.name}>御心狐</div>
         <div className={styles.job}>(前端开发)</div>
