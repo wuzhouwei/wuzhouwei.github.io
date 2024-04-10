@@ -46,7 +46,6 @@ const config = {
           trackingID: "UA-288395864-1",
         },
         sitemap: {
-          lastmod: "date",
           changefreq: "daily",
           priority: 0.5,
           ignorePatterns: ["/tags/**"],
