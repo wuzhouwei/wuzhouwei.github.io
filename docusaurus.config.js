@@ -11,7 +11,7 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  favicon: "/favicon.ico",
   organizationName: "wuzhouwei", // Usually your GitHub org/user name.
   projectName: "wuzhouwei.github.io", // Usually your repo name.
   deploymentBranch: "main",
