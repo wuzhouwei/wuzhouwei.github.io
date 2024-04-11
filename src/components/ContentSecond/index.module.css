@@ -53,3 +53,10 @@
     }
 
 }
+
+.text {
+    font-size: 16px;
+    background-image: linear-gradient(to right, #ff0000, #ff00ff);
+    -webkit-background-clip: text;
+    color: transparent;
+}
