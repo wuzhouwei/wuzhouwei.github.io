@@ -1194,6 +1194,33 @@ let arr = [1, 2, 4, 4, 3, 3, 1, 5, 3]
 console.log(duplicates(arr)); //[1，3，4]
 ```
 
+**第二种：数组对象去重**
+
+```js
+let person = [
+  {id: 0, name: "小明"},
+  {id: 1, name: "小张"},
+  {id: 2, name: "小李"},
+  {id: 3, name: "小孙"},
+  {id: 1, name: "小张"},
+  {id: 2, name: "小李"},
+];
+
+let obj = {};
+//方法1
+person = person.reduce((cur, next) => {
+  obj[next.id] ? "" : obj[next.id] = true && cur.push(next);
+  return cur;
+}, []) //设置cur默认类型为数组，并且初始值为空的数组
+//方法2
+function uniqueFunc(arr: any[], uniId: String) {
+  const res = new Map();
+  return arr.filter((item) => !res.has(item[uniId]) && res.set(item[uniId], 1));
+}
+
+console.log(person, uniqueFunc(person, 'id'));
+```
+
 ### 2.深拷贝
 
 **方法1：递归方式**
@@ -1356,33 +1383,6 @@ console.log(Object.prototype.toString.call(str)); // [object String]
 console.log(Object.prototype.toString.call(bool));// [object Boolean]
 console.log(Object.prototype.toString.call(nu));  // [object Null]
 console.log(Object.prototype.toString.call(un));  // [object Undefined]
-```
-
-### 5.数组对象去重
-
-```js
-let person = [
-  {id: 0, name: "小明"},
-  {id: 1, name: "小张"},
-  {id: 2, name: "小李"},
-  {id: 3, name: "小孙"},
-  {id: 1, name: "小张"},
-  {id: 2, name: "小李"},
-];
-
-let obj = {};
-//方法1
-person = person.reduce((cur, next) => {
-  obj[next.id] ? "" : obj[next.id] = true && cur.push(next);
-  return cur;
-}, []) //设置cur默认类型为数组，并且初始值为空的数组
-//方法2
-function uniqueFunc(arr: any[], uniId: String) {
-  const res = new Map();
-  return arr.filter((item) => !res.has(item[uniId]) && res.set(item[uniId], 1));
-}
-
-console.log(person, uniqueFunc(person, 'id'));
 ```
 
 ## 6.小技巧
