@@ -77,15 +77,36 @@ const config = {
             position: "right",
           },
         ],
+        hideOnScroll: true,
       },
       metadata: [
         {
           name: "keywords",
-          content: "个人参考，个人总结，react，js, ts，给自己使用的文档。",
+          content:
+            "个人记录，个人参考，个人总结，react，js, ts，给自己使用的文档。",
         },
-        { name: "author", content: "wzw" },
-      ],
+        { name: "author", content: "Wu ZhouWei" },
 
+        {
+          name: "description",
+          content: "Documenting Every Step in Development",
+        },
+
+        { name: "twitter:title", content: "御心狐 | 个人记录" },
+        {
+          name: "twitter:description",
+          content: "Documenting Every Step in Development",
+        },
+        { name: "twitter:url", content: "https://wuzhouwei.github.io" },
+
+        { property: "og:title", content: "御心狐 | 个人记录" },
+        {
+          property: "og:description",
+          content: "Documenting Every Step in Development",
+        },
+        { property: "og:url", content: "https://wuzhouwei.github.io" },
+      ],
+      image: "img/fox.png", //og:image and twitter:image
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
