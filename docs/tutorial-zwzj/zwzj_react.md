@@ -278,7 +278,13 @@ const Parent = () => {
 
 ## 4.生命周期
 
+> 旧版生命周期图
+
 ![生命周期](image/react_smzq.png)
+
+> 新版生命周期图
+
+![生命周期新](image/newLifecycle.jpg)
 
 > **React 16.3+**
 
