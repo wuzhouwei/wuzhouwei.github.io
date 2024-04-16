@@ -2,7 +2,7 @@ import React, { memo } from "react";
 import Link from "@docusaurus/Link";
 import Github from "@site/static/img/github.svg";
 import styles from "./index.module.css";
-import fox from "@site/static/img/fox.png";
+import fox from "@site/static/img/fox.jpeg";
 
 const Index = memo(() => {
   return (
