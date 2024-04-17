@@ -32,6 +32,7 @@ const sidebars = {
         "tutorial-zwzj/zwzj_js",
         "tutorial-zwzj/zwzj_css",
         "tutorial-zwzj/zwzj_react",
+        "tutorial-zwzj/zwzj_ts",
         "tutorial-zwzj/zwzj_git",
         "tutorial-zwzj/zwzj_webpack",
         "tutorial-zwzj/zwzj_http_respond",
