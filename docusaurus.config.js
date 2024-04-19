@@ -62,7 +62,7 @@ const config = {
         title: "御心狐",
         logo: {
           alt: "御心狐",
-          src: "img/fox.jpeg",
+          src: "img/foxSmall.jpeg",
         },
         items: [
           {
@@ -106,7 +106,7 @@ const config = {
         },
         { property: "og:url", content: "https://wuzhouwei.github.io" },
       ],
-      image: "img/fox.jpeg", //og:image and twitter:image
+      image: "img/fox1.png", //og:image and twitter:image
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
