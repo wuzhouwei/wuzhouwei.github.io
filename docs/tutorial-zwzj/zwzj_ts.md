@@ -401,8 +401,11 @@ Dog.bark();            // 输出 "Woof Woof!"
 > `keyof`接受一个对象类型并返回一个接受该对象的任何键的类型。
 
 ```ts
-type Point = { x: number; y: number };
-type P = keyof typeof Point; // type '"x" || "y"'
+type Point = { x: number; y: string; };
+
+const point: Point = {x: 123, y: '456'};
+
+type P = keyof typeof point; // type '"x" || "y"'
 
 const coordinate: P = 'x'
 ```
