@@ -398,7 +398,7 @@ Dog.bark();            // 输出 "Woof Woof!"
 
 ### 常用工具类
 
-1.keyof
+#### 1.`keyof`
 
 > `keyof`接受一个对象类型并返回一个接受该对象的任何键的类型。
 
@@ -412,7 +412,7 @@ type P = keyof typeof point; // type '"x" || "y"'
 const coordinate: P = 'x'
 ```
 
-2.Partial<Type>
+#### 2.`Partial<Type>`
 
 > 将所有属性设置为可选的类型。与 Required 相反。
 
@@ -424,7 +424,7 @@ const p: Partial<Todo> = {
 };
 ```
 
-3.Required<Type>
+#### 3.`Required<Type>`
 
 > 将所有属性设置为必选的类型。与 Partial 相反。
 
@@ -437,7 +437,7 @@ const p: Required<Todo> = {
 };
 ```
 
-4.Readonly<Type>
+#### 4.`Readonly<Type>`
 
 > 只读属性
 
@@ -454,7 +454,7 @@ todo.title = "Hello";
 // Cannot assign to title because it is a read-only property.
 ```
 
-5.Record<Keys, Type>
+#### 5.`Record<Keys, Type>`
 
 > 构造一个对象类型，其属性键为 Keys，其属性值为 Type
 
@@ -474,7 +474,7 @@ const data: Record<TestName, Info> = {
 console.log(data, "test");
 ```
 
-6.Pick<Type, Keys>
+#### 6.`Pick<Type, Keys>`
 
 > 通过从 Type 中选取一组属性 Keys（字符串字面或字符串字面的并集）来构造一个类型。与 Omit 相反
 
@@ -493,7 +493,7 @@ const todo: TodoPreview = {
 };//Initial type: {a: string, c: boolean}
 ```
 
-7.Omit<Type, Keys>
+#### 7.`Omit<Type, Keys>`
 
 > 通过从 Type 中选择所有属性然后删除 Keys（字符串字面或字符串字面的并集）来构造一个类型。与 Pick 相反
 
@@ -511,7 +511,7 @@ const todo: TodoPreview = {
 };//Initial type: {b: number}
 ```
 
-8.Exclude<UnionType, ExcludedMembers>
+#### 8.`Exclude<UnionType, ExcludedMembers>`
 
 > 通过从 UnionType 中排除所有可分配给 ExcludedMembers 的联合成员来构造一个类型。与 Extract 相反
 
@@ -521,7 +521,7 @@ type Todo = Exclude<"a" | "b" | "c", "b">;
 const todo: Todo = 'a' //Initial type: "a" | "c"
 ```
 
-9.Extract<Type, Union>
+#### 9.`Extract<Type, Union>`
 
 > 通过从 Type 中提取所有可分配给 Union 的联合成员来构造一个类型。与 Exclude 相反
 
@@ -531,7 +531,7 @@ type Todo = Extract<"a" | "b" | "c", "b">;
 const todo: Todo = "b"; //Initial type: "b"
 ```
 
-10.NonNullable<Type>
+#### 10.`NonNullable<Type>`
 
 > 通过从 Type 中排除 null 和 undefined 来构造一个类型。
 
