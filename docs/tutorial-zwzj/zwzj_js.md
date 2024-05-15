@@ -470,15 +470,15 @@ const res1 = "res1";
 const res2 = "res2";
 
 (function (arg1, arg2) {
-  console.log(this, arg1, arg2, "this");
+  console.log(this, arg1, arg2, "call");
 }).call(object, res1, res2);
 
 (function (arg1, arg2) {
-  console.log(this, arg1, arg2, "this2");
+  console.log(this, arg1, arg2, "apply");
 }).apply(object, [res1, res2]);
 
 (function (arg1, arg2) {
-  console.log(this, arg1, arg2, "this3");
+  console.log(this, arg1, arg2, "bind");
 }).bind(object, res1, res2)();
 ```
 
