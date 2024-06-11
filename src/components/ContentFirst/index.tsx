@@ -1,6 +1,4 @@
 import React, { memo } from "react";
-import Link from "@docusaurus/Link";
-import Github from "@site/static/img/github.svg";
 import styles from "./index.module.css";
 import fox from "@site/static/img/foxBig.webp";
 
@@ -10,13 +8,6 @@ const Index = memo(() => {
       <section className={styles.section}>
         <div>
           <img src={fox} alt="fox" className={styles.headPortrait} />
-        </div>
-        <div className={styles.name}>御心狐</div>
-        <div className={styles.job}>(前端开发)</div>
-        <div>
-          <Link href="//github.com/wuzhouwei">
-            <Github className={styles.githubIcon} />
-          </Link>
         </div>
       </section>
     </div>

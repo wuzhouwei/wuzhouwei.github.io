@@ -7,56 +7,8 @@
 .section {
     display: flex;
     max-width: 1000px;
-    margin: 40px auto;
     padding: 20px;
     background: var(--ifm-color-bg-home);
     border-radius: 2px;
     box-shadow: 0 1px 4px 0 var(--ifm-color-first-shadow);
-
-}
-
-.leftWrap {
-    flex: 0.8;
-}
-
-.item {
-    padding: 10px 0 5px 10px;
-    margin-right: 20px;
-    border-bottom: 2px dotted var(--ifm-color-common-border);
-}
-
-.key {
-    display: inline-block;
-    width: 120px;
-    text-align: left;
-}
-
-.value {
-    text-align: left;
-}
-
-.rightWrap {
-    display: flex;
-    flex: 1.2;
-    justify-content: space-between;
-    align-items: flex-start;
-    flex-direction: column;
-}
-
-@media screen and (max-width: 996px) {
-    .section {
-        flex-direction: column;
-    }
-
-    .rightWrap {
-        margin: 20px 0 0 5px;
-    }
-
-}
-
-.text {
-    font-size: 16px;
-    background-image: linear-gradient(to right, #ff0000, #ff00ff);
-    -webkit-background-clip: text;
-    color: transparent;
 }
