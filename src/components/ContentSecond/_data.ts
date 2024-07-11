@@ -11,17 +11,17 @@ export const data: {
   {
     id: 2,
     keys: "年龄",
-    value: "快奔三了",
-  },
-  {
-    id: 5,
-    keys: "码龄",
-    value: "好几年了",
+    value: `${new Date().getFullYear() - 1995}`,
   },
   {
     id: 3,
+    keys: "码龄",
+    value: `${new Date().getFullYear() - 2019} 年`,
+  },
+  {
+    id: 4,
     keys: "名字",
-    value: "御心狐🦊",
+    value: "御心狐",
   },
 ];
 

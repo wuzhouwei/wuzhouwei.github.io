@@ -14,6 +14,15 @@
     }
 }
 
+@keyframes colorChange {
+    70% {
+        color: #fff
+    }
+    100% {
+        color: #000
+    }
+}
+
 .adornBg {
     position: fixed;
     top: 0;
@@ -44,6 +53,7 @@
     overflow: hidden;
     padding: 2rem;
     text-align: center;
+    animation: colorChange 4s linear infinite;
 }
 
 .card::before {
