@@ -20,8 +20,8 @@ export const data: {
   },
   {
     id: 4,
-    keys: "名字",
-    value: "御心狐",
+    keys: "代号",
+    value: "「御心狐」",
   },
 ];
 
