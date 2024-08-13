@@ -1369,13 +1369,15 @@ console.log(arr instanceof Object); //true
 > 其他利用 Object.prototype.toString.call()
 
 ```js
-let arr = [];
-let obj = {};
-let num = 1
-let str = '1'
-let bool = true;
-let nu = null;
-let un = undefined;
+const arr = [];
+const obj = {};
+const num = 1
+const str = '1'
+const bool = true;
+const nu = null;
+const un = undefined;
+const sym = Symbol(123)
+const bi = BigInt(123)
 console.log(Object.prototype.toString.call(arr)); // [object Array]
 console.log(Object.prototype.toString.call(obj)); // [object Object]
 console.log(Object.prototype.toString.call(num)); // [object Number]
@@ -1383,6 +1385,8 @@ console.log(Object.prototype.toString.call(str)); // [object String]
 console.log(Object.prototype.toString.call(bool));// [object Boolean]
 console.log(Object.prototype.toString.call(nu));  // [object Null]
 console.log(Object.prototype.toString.call(un));  // [object Undefined]
+console.log(Object.prototype.toString.call(sym)); // [object Symbol]
+console.log(Object.prototype.toString.call(bi));  // [object BigInt]
 ```
 
 ## 6.小技巧
