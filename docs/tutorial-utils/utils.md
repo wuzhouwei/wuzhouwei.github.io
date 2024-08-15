@@ -161,3 +161,47 @@ export function sleep(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 ```
+
+```tsx live
+/**
+ * 寻找两个字符串中公共最长的子串
+ */
+
+function Example(props) {
+
+  function findLongestCommonSubstring(str1, str2) {
+    const len1 = str1.length;
+    const len2 = str2.length;
+    let maxLength = 0;
+    let endIndex = 0;
+
+    // 创建一个二维数组，初始化为0
+    const dp = Array.from({length: len1 + 1}, () => Array(len2 + 1).fill(0));
+    console.log(dp);
+    // 填充 dp 表
+    for (let i = 1; i <= len1; i++) {
+      for (let j = 1; j <= len2; j++) {
+        if (str1[i - 1] === str2[j - 1]) {
+          dp[i][j] = dp[i - 1][j - 1] + 1;
+          if (dp[i][j] > maxLength) {
+            maxLength = dp[i][j];
+            endIndex = i;  // 记录最长子串的结尾索引
+          }
+        }
+      }
+    }
+
+    // 根据最长子串的长度和结尾索引，截取子串
+    return str1.substring(endIndex - maxLength, endIndex);
+  }
+
+  const str1 = "1222234444445";
+  const str2 = "6222854445";
+  const longestCommonSubstring = findLongestCommonSubstring(str1, str2);
+
+  return (
+    <span>{longestCommonSubstring}</span>
+  );
+}
+
+```
