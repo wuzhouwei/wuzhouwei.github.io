@@ -2,6 +2,19 @@
  * CSS files with the .module.css suffix will be treated as CSS modules
  * and scoped locally.
  */
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* 上跳 */
+    }
+    100% {
+        transform: translateY(0); /* 恢复原位 */
+    }
+}
+
 @keyframes rotate {
     100% {
         transform: rotate(1turn);
@@ -23,12 +36,161 @@
     }
 }
 
-.adornBg {
-    position: fixed;
+@keyframes ran {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 1000px 0;
+    }
+}
+
+a {
+    text-decoration: none !important;
+}
+
+
+.container {
+    margin: 30px auto;
+    font-family: xst, serif;
+}
+
+.wrap {
+    display: grid;
+    grid-template-columns: 35% auto;
+    grid-gap: 32px;
+}
+
+@media screen and (max-width: 650px) {
+    .wrap {
+        grid-template-columns: 1fr;
+        padding: 12px;
+    }
+}
+
+.basic, .infoWrap {
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-gap: 35px;
+}
+
+.basic {
+    flex: 0.6;
+}
+
+.infoWrap {
+    grid-template-rows: max-content;
+}
+
+.picWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headPortrait {
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 1px 4px 0 var(--ifm-color-first-shadow);
+}
+
+.box {
+    padding: 10px;
+    border-radius: 12px;
+    position: relative;
+    background-color: var(--ifm-color-home-box);
+    box-shadow: 0 0 2px 0 var(--ifm-color-first-shadow);
+}
+
+.box::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 350px;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background: url("../../static/media/cartoon/cartoon4.svg") no-repeat;
+    background-size: 100% 100%;
+    filter: blur(50px);
+    border-radius: 12px;
+}
+
+.blockTitle {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    font-size: 18px;
+}
+
+.position {
+    color: #00d600;
+    margin-right: 5px;
+}
+
+.media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.hobbyWrap {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+}
+
+.hobby {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, .05);
+    font-size: 18px;
+    text-align: center;
+}
+
+.skillWrap {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.skill {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, .05);
+    transition: transform 0.2s;
+}
+
+.skill:hover {
+    transform: scale(1.2);
+}
+
+
+.title, .introduce {
+    margin: 0;
+}
+
+.title {
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 50px;
+    background: linear-gradient(45deg, #39eef6, #f86527, #fcd72d, #5f2cf8, #bed5f5);
+    color: transparent;
+    -webkit-background-clip: text;
+    animation: ran 10s linear infinite;
+    text-align: center;
+}
+
+.introduce {
+    font-size: 25px;
+    max-width: 400px;
 }
 
 .contentWrap {
@@ -36,7 +198,7 @@
     gap: 32px;
     position: relative;
     margin: 0 auto;
-    background: var(--ifm-color-bg-home);
+    background-color: var(--ifm-color-bg-home);
 }
 
 .cardWrap {
@@ -45,48 +207,39 @@
     gap: 12px;
 }
 
+.cardInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.cardIcon {
+    transition: transform 0.2s ease;
+}
+
+.cardInfo:hover .cardIcon {
+    transform: translateY(10px) scale(1.4);
+}
+
 
 .card {
-    position: relative;
-    z-index: 0;
     border-radius: 10px;
     overflow: hidden;
     padding: 2rem;
     text-align: center;
-    animation: colorChange 4s linear infinite;
+    background-color: rgba(0, 0, 0, .1);
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    z-index: -2;
-    left: -50%;
-    top: -50%;
-    width: 200%;
-    height: 200%;
-    background-color: #399953;
-    background-repeat: no-repeat;
-    background-size: 50% 50%, 50% 50%;
-    background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-    background-image: linear-gradient(#399953, #399953), linear-gradient(#fbb300, #fbb300), linear-gradient(#d53e33, #d53e33), linear-gradient(#377af5, #377af5);
-    animation: rotate 4s linear infinite;
-}
 
-.card::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    left: 6px;
-    top: 6px;
-    width: calc(100% - 12px);
-    height: calc(100% - 12px);
-    background: var(--ifm-color-bg-home);
-    border-radius: 5px;
-    animation: opacityChange 2s infinite alternate;
-}
-
-.title {
+.cardTitle {
     margin: 0;
+    font-family: inherit;
+    font-size: 25px;
+}
+
+.cardVal {
+    font-size: 20px;
 }
 
 .font {
@@ -94,8 +247,23 @@
 }
 
 .text {
-    font-size: 16px;
-    background-image: linear-gradient(to right, #ff0000, #ff00ff);
+    font-size: 20px;
+    background-image: linear-gradient(to right, #fcd72d, #5f2cf8);
     -webkit-background-clip: text;
     color: transparent;
 }
+
+.introduce span {
+    display: inline-block;
+    animation: bounce 2s ease infinite;
+}
+
+
+.bouncingHobby span {
+    display: inline-block;
+}
+
+.bouncingHobby:hover span {
+    animation: bounce 1s ease;
+}
+

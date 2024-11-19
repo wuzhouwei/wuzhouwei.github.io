@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import Layout from "@theme/Layout";
 import styles from "./index.module.css";
-import ContentFirst from "@site/src/components/ContentFirst";
-import ContentSecond from "@site/src/components/ContentSecond";
-import { data, point } from "@site/src/components/ContentSecond/_data";
+import { point } from "@site/src/pages/_data";
 import Typed from "typed.js";
+import fox from "@site/static/img/foxBig.webp";
+import MediaPage from "./media";
+import HobbyPage from "./hobby";
+import SkillPage from "./skill";
+import IntroducePage from "./introduce";
 
 export default function Home(): JSX.Element {
   const el = useRef(null);
@@ -22,24 +25,37 @@ export default function Home(): JSX.Element {
       typed.destroy();
     };
   }, []);
+
+  const text =
+    "怎么才能让兴趣一直保持下去呢，好难啊，干了那么多年还是一个小菜鸡，啥都会一点，啥都不精，哈哈哈！";
   return (
     <Layout>
-      <div className={styles.adornBg} />
-      <article className={styles.contentWrap}>
-        <ContentFirst />
-        <div className={styles.cardWrap}>
-          {data.map((item) => (
-            <div key={item.id} className={styles.card}>
-              <h3 className={styles.title}>{item.keys}</h3>
-              <span>{item.value}</span>
+      <div className={styles.container}>
+        <div className={styles.wrap}>
+          <div className={styles.basic}>
+            <section className={styles.picWrap}>
+              <img src={fox} alt="fox" className={styles.headPortrait} />
+            </section>
+            <MediaPage />
+            <HobbyPage />
+            <SkillPage />
+          </div>
+          <div className={styles.infoWrap}>
+            <h2 className={styles.title}>I'm YuXinhu</h2>
+            <p className={styles.introduce}>
+              {text.split("").map((char, index) => (
+                <span key={index} style={{ animationDelay: `${index * 0.1}s` }}>
+                  {char}
+                </span>
+              ))}
+            </p>
+            <div className={styles.font}>
+              <span className={styles.text} ref={el} />
             </div>
-          ))}
+            <IntroducePage />
+          </div>
         </div>
-        <div className={styles.font}>
-          <span className={styles.text} ref={el} />
-        </div>
-        <ContentSecond />
-      </article>
+      </div>
     </Layout>
   );
 }
