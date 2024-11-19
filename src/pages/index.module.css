@@ -8,10 +8,10 @@
         transform: translateY(0);
     }
     50% {
-        transform: translateY(-10px); /* 上跳 */
+        transform: translateY(-10px);
     }
     100% {
-        transform: translateY(0); /* 恢复原位 */
+        transform: translateY(0);
     }
 }
 

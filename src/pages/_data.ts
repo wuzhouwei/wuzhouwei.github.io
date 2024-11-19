@@ -24,6 +24,12 @@ import PostmanIcon from "@site/static/media/skill/postman.svg";
 import PsIcon from "@site/static/media/skill/ps.svg";
 import ReactIcon from "@site/static/media/skill/react.svg";
 import SqlIcon from "@site/static/media/skill/sql.svg";
+import TsIcon from "@site/static/media/skill/ts.svg";
+import AntdIcon from "@site/static/media/skill/antd.svg";
+import HtmlIcon from "@site/static/media/skill/html.svg";
+import SvelteIcon from "@site/static/media/skill/svelte.svg";
+import StyledComponentIcon from "@site/static/media/skill/styledCop.svg";
+import MaterialUiIcon from "@site/static/media/skill/material-ui.svg";
 
 export const mediums: {
   href: string;
@@ -79,48 +85,72 @@ export const skill: {
   component: React.ComponentType<any>;
 }[] = [
   {
-    title: "css",
-    component: CssIcon,
-  },
-  {
-    title: "git",
-    component: GitIcon,
-  },
-  {
-    title: "javascript",
-    component: JsIcon,
-  },
-  {
-    title: "Linux",
-    component: LinuxIcon,
-  },
-  {
-    title: "markdown",
-    component: MdIcon,
+    title: "React js",
+    component: ReactIcon,
   },
   {
     title: "Next js",
     component: NextJsIcon,
   },
   {
+    title: "svelte",
+    component: SvelteIcon,
+  },
+  {
+    title: "typescript",
+    component: TsIcon,
+  },
+  {
     title: "Node js",
     component: NodeJsIcon,
+  },
+  {
+    title: "javascript",
+    component: JsIcon,
+  },
+  {
+    title: "html",
+    component: HtmlIcon,
+  },
+  {
+    title: "css",
+    component: CssIcon,
+  },
+  {
+    title: "Ant design",
+    component: AntdIcon,
+  },
+  {
+    title: "material-ui",
+    component: MaterialUiIcon,
+  },
+  {
+    title: "styled-components",
+    component: StyledComponentIcon,
+  },
+  {
+    title: "git",
+    component: GitIcon,
+  },
+  {
+    title: "Linux",
+    component: LinuxIcon,
+  },
+  {
+    title: "mysql",
+    component: SqlIcon,
   },
   {
     title: "Postman",
     component: PostmanIcon,
   },
   {
+    title: "markdown",
+    component: MdIcon,
+  },
+  {
     title: "photoshop",
     component: PsIcon,
-  },
-  {
-    title: "React js",
-    component: ReactIcon,
-  },
-  {
-    title: "mysql",
-    component: SqlIcon,
   },
 ];
 
