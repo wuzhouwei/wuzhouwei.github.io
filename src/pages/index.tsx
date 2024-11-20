@@ -8,6 +8,7 @@ import MediaPage from "./media";
 import HobbyPage from "./hobby";
 import SkillPage from "./skill";
 import IntroducePage from "./introduce";
+import ArticleListPage from "./articleList";
 
 export default function Home(): JSX.Element {
   const el = useRef(null);
@@ -53,6 +54,7 @@ export default function Home(): JSX.Element {
               <span className={styles.text} ref={el} />
             </div>
             <IntroducePage />
+            <ArticleListPage />
           </div>
         </div>
       </div>

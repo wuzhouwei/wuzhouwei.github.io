@@ -186,6 +186,29 @@ export const introduce: {
   },
 ];
 
+export const articleList: { title: string; href: string }[] = [
+  {
+    title: "这是关于js的部分总结",
+    href: "/docs/tutorial-zwzj/zwzj_js",
+  },
+  {
+    title: "这是关于css的部分总结",
+    href: "/docs/tutorial-zwzj/zwzj_css",
+  },
+  {
+    title: "这是关于react的部分总结",
+    href: "/docs/tutorial-zwzj/zwzj_react",
+  },
+  {
+    title: "这是关于ts的部分总结",
+    href: "/docs/tutorial-zwzj/zwzj_ts",
+  },
+  {
+    title: "这是关于git的部分总结",
+    href: "/docs/tutorial-zwzj/zwzj_git",
+  },
+];
+
 export const point: string[] = [
   "无人扶我青云志，我自踏雪至山巅。",
   "我自横刀向天笑，去留肝胆两昆仑。",
