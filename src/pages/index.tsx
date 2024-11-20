@@ -8,6 +8,7 @@ import MediaPage from "./media";
 import HobbyPage from "./hobby";
 import SkillPage from "./skill";
 import IntroducePage from "./introduce";
+import ExertOneself from "./exertOneself";
 import ArticleListPage from "./articleList";
 
 export default function Home(): JSX.Element {
@@ -54,6 +55,7 @@ export default function Home(): JSX.Element {
               <span className={styles.text} ref={el} />
             </div>
             <IntroducePage />
+            <ExertOneself />
             <ArticleListPage />
           </div>
         </div>

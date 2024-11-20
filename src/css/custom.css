@@ -21,6 +21,8 @@
     --ifm-color-first-font: #363636;
     --ifm-color-common-border: #eee;
     --ifm-color-home-box: rgba(255, 255, 255, 0.5);
+    --ifm-color-bubble: #fff;
+
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -39,6 +41,7 @@
     --ifm-color-first-font: #F3F7F6;
     --ifm-color-common-border: #F3F7F6;
     --ifm-color-home-box: rgba(176, 196, 222, 0.5);
+    --ifm-color-bubble: #000;
 }
 
 .docusaurus-highlight-code-line {
