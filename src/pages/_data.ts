@@ -168,8 +168,8 @@ export const introduce: {
   },
   {
     id: 2,
-    keys: "年龄",
-    value: `${new Date().getFullYear() - 1995}`,
+    keys: "？？？",
+    value: `？？？`,
     component: Cartoon2Icon,
   },
   {
