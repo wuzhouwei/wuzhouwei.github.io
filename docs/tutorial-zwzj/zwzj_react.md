@@ -426,6 +426,8 @@ getState 获取最新的数据
 - **只能在函数最外层调用 Hook。不要在循环、条件判断或者子函数中调用**
 - **只能在 React 的函数组件中调用 Hook。不要在其他 JavaScript 函数中调用**
 
+> tip:"为什么不能在 if 中用 Hook?" —— 因为这会破坏 Hook 链表结构，导致错位。
+
 ### useState
 
 ```tsx

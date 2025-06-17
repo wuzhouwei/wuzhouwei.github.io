@@ -73,6 +73,38 @@
     }
 }
 
+@keyframes rotateCirclePrev {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotateCircleNext {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        transform: rotate(-360deg);
+    }
+}
+
+@keyframes smoky {
+    60% {
+        text-shadow: 0 0 40px #fff;
+    }
+
+    100% {
+        text-shadow: 0 0 20px #fff;
+        transform: translate3d(15rem, -8rem, 0) rotate(-40deg) skew(70deg) scale(1.5);
+        opacity: 0;
+    }
+}
+
 a {
     text-decoration: none !important;
 }
@@ -110,17 +142,71 @@ a {
     grid-template-rows: max-content;
 }
 
+.smokyWrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 20px;
+    color: transparent;
+    background-color: var(--ifm-color-primary-light);
+    border-radius: 12px;
+}
+
+.smokyH3 {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    text-shadow: 0 0 0 #fff;
+    animation: smoky 4s ease infinite;
+    color: transparent;
+}
+
 .picWrap {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .headPortrait {
-    width: 200px;
+    width: 140px;
     height: auto;
     border-radius: 50%;
     box-shadow: 0 1px 4px 0 var(--ifm-color-first-shadow);
+}
+
+.circleTextWrap {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.roundWrap {
+    position: relative;
+    width: 180px;
+    height: 180px;
+}
+
+.rotating {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    animation: rotateCirclePrev 10s linear infinite;
+}
+
+.char {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-radius: 50%;
+    font-size: 18px;
+    transform-origin: center center;
+    animation: rotateCircleNext 10s linear infinite;
 }
 
 .box {
@@ -158,6 +244,7 @@ a {
 }
 
 .media {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -298,7 +385,7 @@ a {
 }
 
 .articleBox:hover .arrow {
-    animation: repeatedly 0.7s cubic-bezier(0.42, 0.00, 0.58, 1.00) 2;
+    animation: repeatedly 0.4s cubic-bezier(0.42, 0.00, 0.58, 1.00) 2;
 }
 
 .text {

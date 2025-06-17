@@ -10,6 +10,8 @@ import SkillPage from "./skill";
 import IntroducePage from "./introduce";
 import ExertOneself from "./exertOneself";
 import ArticleListPage from "./articleList";
+import CircleText from "@site/src/pages/CircleText";
+import SmokyText from "@site/src/pages/SmokyText";
 
 export default function Home(): JSX.Element {
   const el = useRef(null);
@@ -37,6 +39,9 @@ export default function Home(): JSX.Element {
           <div className={styles.basic}>
             <section className={styles.picWrap}>
               <img src={fox} alt="fox" className={styles.headPortrait} />
+              <div className={styles.circleTextWrap}>
+                <CircleText texts={["御", "心", "狐", "🦊"]}></CircleText>
+              </div>
             </section>
             <MediaPage />
             <HobbyPage />
@@ -51,6 +56,7 @@ export default function Home(): JSX.Element {
                 </span>
               ))}
             </p>
+            <SmokyText text={"往事随风"}></SmokyText>
             <div className={styles.font}>
               <span className={styles.text} ref={el} />
             </div>
