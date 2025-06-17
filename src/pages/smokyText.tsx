@@ -1,7 +1,13 @@
 import React, { FC, useEffect, useState } from "react";
 import styles from "./index.module.css";
+import useIsBrowser from "@docusaurus/useIsBrowser";
 
-const SmokyText: FC<{ text: string }> = ({ text }) => {
+const SmokyText: FC<{ text: string }> = ({ text = "" }) => {
+  const isBrowser = useIsBrowser();
+
+  if (!isBrowser) {
+    return null; // SSR 阶段跳过渲染
+  }
   const [playKey, setPlayKey] = useState(0);
   const lines = text.split("");
   const t = lines.length;
